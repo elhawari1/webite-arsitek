@@ -13,7 +13,7 @@
                 </ol>
             </div><!-- /.col -->
             <div class="ml-auto">
-                <a href="/project/add" class="btn btn-outline-primary" style="float: right">Add Project</i></a>
+                <a href="/project/create" class="btn btn-outline-primary" style="float: right">Add Project</i></a>
             </div>
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -42,15 +42,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $no = 1; ?>
+                        @foreach ($project as $data)
                         <tr>
-                            <th>{{ $no++ }}</th>
-                            <th>Title</th>
-                            <th>Type</th>
-                            <th>Address</th>
-                            <th>Date</th>
+                            <th>{{ $loop->iteration }}</th>
+                            <th>{{ $data->title }}</th>
+                            <th>{{ $data->type }}</th>
+                            <th>{{ $data->address }}</th>
+                            <th>{{ $data->date }}</th>
                             <th>Action</th>
                         </tr>
+                        @endforeach
                     </tbody>
                     <tfoot>
                         <tr>

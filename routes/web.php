@@ -30,10 +30,9 @@ Route::get('/admin', [DashboardController::class, 'index'])->name('admin');
 
 Route::controller(ProjectController::class)->group(function (){
     Route::get('/project', 'index')->name('project');
-    Route::get('/project/add', 'add');
-    Route::post('/project/insert', 'insert');
+    Route::get('/project/create', 'create');
+    Route::post('/project/store', 'store');
 });
-
 
 Route::controller(ProductController::class)->group(function (){
     Route::get('/product', 'index')->name('product');

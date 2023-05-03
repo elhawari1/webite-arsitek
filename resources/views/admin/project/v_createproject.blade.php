@@ -26,7 +26,7 @@
 <section class="content">
     <div class="container-fluid">
         <!-- Info boxes -->
-        <form action="/kantor/insert" method="POST">
+        <form action="/project/store" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="d-flex justify-content-around">
@@ -47,7 +47,7 @@
                 </div>
                 <div class="container">
                     <h6>Desgin Style</h6>
-                    <input type="text" name="desgin_style" placeholder="Desgin Style" class="form-control" value="">
+                    <input type="text" name="design_style" placeholder="Desgin Style" class="form-control" value="">
                 </div>
             </div>
 
@@ -65,16 +65,18 @@
             <div class="d-flex justify-content-around pt-3">
                 <div class="container">
                     <h6>Date</h6>
-                    <input type="date" name="status" placeholder="Status" class="form-control" value="">
-                    {{-- <br> --}}
+                    <input type="date" name="date" placeholder="Status" class="form-control" value="">
                     <h6 class="pt-3">Description</h6>
-                    <textarea name="address" id="" cols="81" rows="10" placeholder="Description" class="form-control"></textarea>
-                    {{-- <textarea type="textarea" name="address" placeholder="Address" class="form-control" value=""> --}}
+                    <textarea name="description" id="" cols="81" rows="10" placeholder="Description" class="form-control"></textarea>
                 </div>
+                {{-- <div class="container">
+                    <h6>Image</h6>
+                    <input id="input-fa" type="file" name="image" class="form-control file" value=""
+                    data-browse-on-zone-click="true">
+                </div> --}}
                 <div class="container">
                     <h6>Image</h6>
-                    <input id="input-fa" type="file" name="gambar" class="form-control file" value=""
-                    data-browse-on-zone-click="true">
+                    <input type="text" name="image" placeholder="Image" class="form-control" value="">
                 </div>
             </div>
 
