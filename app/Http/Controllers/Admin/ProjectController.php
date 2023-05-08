@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Models\Admin\ProductModel;
 use App\Models\Admin\ProjectModel;
 use App\Http\Controllers\Controller;
 
@@ -39,6 +40,18 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        // $request->validate([
+        //     'title' => 'required',
+        //     'type' => 'required',
+        //     'area_size' => 'required',
+        //     'design_style' => 'required',
+        //     'address' => 'required',
+        //     'status' => 'required',
+        //     'date' => 'required',
+        //     'description' => 'required',zAA
+        //     'image' => 'required',
+        // ]);
+        
             $title = $request->title;
             $type = $request->type;
             $area_size = $request->area_size;
@@ -51,6 +64,7 @@ class ProjectController extends Controller
 
             try {
                 $pjt = new ProjectModel;
+                $hh = new ProductModel;
                 $pjt->title = $title;
                 $pjt->type =$type;
                 $pjt->area_size = $area_size;

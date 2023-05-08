@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\DashboardController;
 */
 
 Route::get('/', function () {
-    return view('layout_user.v_index');
+    return view('user.v_home');
 });
 
 
@@ -29,13 +29,13 @@ Route::get('/', function () {
 Route::get('/admin', [DashboardController::class, 'index'])->name('admin');
 
 Route::controller(ProjectController::class)->group(function (){
-    Route::get('/project', 'index')->name('project');
+    Route::get('/admin/project', 'index')->name('project');
     Route::get('/project/create', 'create');
     Route::post('/project/store', 'store');
 });
 
 Route::controller(ProductController::class)->group(function (){
-    Route::get('/product', 'index')->name('product');
+    Route::get('/admin/product', 'index')->name('product');
     Route::get('/product/add', 'add');
 
 });

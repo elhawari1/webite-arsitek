@@ -32,7 +32,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="/project" class="nav-link">
+            <a href="/admin/project" class="nav-link">
               <font style="color: white;">
                 <i class="nav-icon fas fa-building"></i>
                 <p>Project</p>
@@ -41,7 +41,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="/product" class="nav-link">
+            <a href="/admin/product" class="nav-link">
               <font style="color: white;">
                 <i class="nav-icon fas fa-shopping-cart"></i>
                 <p>Product</p>
