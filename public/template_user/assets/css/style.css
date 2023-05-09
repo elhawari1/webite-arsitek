@@ -1,18 +1,16 @@
-/**
-* Template Name: Butterfly
-* Updated: Mar 10 2023 with Bootstrap v5.2.3
-* Template URL: https://bootstrapmade.com/butterfly-free-bootstrap-theme/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
 body {
     font-family: "Open Sans", sans-serif;
     color: #444444;
+    /* background: ; */
 }
+
+/* body {
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(15, 175, 103);
+} */
 
 a {
     text-decoration: none;
@@ -397,6 +395,34 @@ h6 {
     #hero .hero-img img {
         width: 80%;
     }
+}
+
+/*--------------------------------------------------------------
+# Sidebar detail project
+--------------------------------------------------------------*/
+.sidebar-box {
+    position: relative;
+    height: 100vh;
+    width: 30%;
+    padding: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.sidebar-box h2, p{
+    padding-right: 20px;
+}
+
+/*--------------------------------------------------------------
+# thumbnail
+--------------------------------------------------------------*/
+#tumnail {
+    width: 100%;
+    background: #f9f9f9;
+}
+
+.img-tumnail {
+    height: 45rem;
 }
 
 /*--------------------------------------------------------------

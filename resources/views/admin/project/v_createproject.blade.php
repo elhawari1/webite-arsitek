@@ -1,5 +1,5 @@
 @extends('layout_admin.v_index')
-@section('title','Add Project')
+@section('title','Create Project')
 @section('content')
 {{-- @if (session('status'))
 <div class="alert alert-success alert-dismissible" role="alert">
@@ -88,16 +88,11 @@
                     @error('description')<p class="tex text-danger">{{ $message }}</p>@enderror
                 </div>
                 <div class="container">
-                    <h6>Image</h6>
+                    <h6>Image For Thumbnail</h6>
                     <input id="input-fa" type="file" name="image" class="form-control file" value=""
                     data-browse-on-zone-click="true">
                     @error('image')<p class="tex text-danger">{{ $message }}</p>@enderror
                 </div>
-                {{-- <div class="container">
-                    <h6>Image</h6>
-                    <input type="text" name="image" placeholder="Image" class="form-control" value="">
-                    @error('image')<p class="tex text-danger">{{ $message }}</p>@enderror
-                </div> --}}
             </div>
 
             <div class="form-group pt-3">

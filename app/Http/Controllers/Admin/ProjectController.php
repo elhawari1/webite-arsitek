@@ -40,17 +40,17 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'title' => 'required',
-        //     'type' => 'required',
-        //     'area_size' => 'required',
-        //     'design_style' => 'required',
-        //     'address' => 'required',
-        //     'status' => 'required',
-        //     'date' => 'required',
-        //     'description' => 'required',zAA
-        //     'image' => 'required',
-        // ]);
+        $request->validate([
+            'title' => 'required',
+            'type' => 'required',
+            'area_size' => 'required',
+            'design_style' => 'required',
+            'address' => 'required',
+            'status' => 'required',
+            'date' => 'required',
+            'description' => 'required',
+            'image' => 'required',
+        ]);
         
             $title = $request->title;
             $type = $request->type;

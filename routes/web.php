@@ -43,7 +43,10 @@ Route::controller(ProductController::class)->group(function (){
 Route::controller(ArticleController::class)->group(function (){
     Route::get('/article', 'index')->name('article');
     Route::get('/article/add', 'add');
-
 });
 
 
+// <-- Halaman User --> 
+Route::get('/project/detail', function () {
+    return view('user.project.v_detailproject');
+});
