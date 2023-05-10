@@ -7,10 +7,6 @@ body {
     /* background: ; */
 }
 
-/* body {
-    font-family: 'Poppins', sans-serif;
-    background-color: rgb(15, 175, 103);
-} */
 
 a {
     text-decoration: none;
@@ -401,17 +397,52 @@ h6 {
 # Sidebar detail project
 --------------------------------------------------------------*/
 .sidebar-box {
-    position: relative;
+    /* position: relative; */
     height: 100vh;
-    width: 30%;
-    padding: 0;
+    /* padding: 0; */
     background-color: #fff;
     border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.sidebar-box h2, p{
+.sidebar-box h2,
+p,
+span {
     padding-right: 20px;
 }
+
+
+.gallery {
+    padding: 10px 20px 100% 40px;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+
+  }
+  
+  .gallery img {
+    width: 235px;
+    height: 170px;
+    object-fit: cover;
+    margin: 5px;
+    margin-bottom: 10px;
+  }
+  
+  /* @media (min-width: 768px) {
+    .gallery img {
+      width: calc(33.33% - 10px);
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .gallery img {
+      width: calc(25% - 10px);
+    }
+  } */
+  
+
+
+
 
 /*--------------------------------------------------------------
 # thumbnail
@@ -1302,7 +1333,7 @@ section {
 /*--------------------------------------------------------------
 # Gallery
 --------------------------------------------------------------*/
-.gallery .gallery-item {
+/* .gallery .gallery-item {
     overflow: hidden;
     border-right: 3px solid #fff;
     border-bottom: 3px solid #fff;
@@ -1314,7 +1345,7 @@ section {
 
 .gallery .gallery-item:hover img {
     transform: scale(1.1);
-}
+} */
 
 /*--------------------------------------------------------------
 # Contact

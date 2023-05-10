@@ -17,12 +17,26 @@
 </section>
 
 <section id="detail" style="background: #F9F9F9">
-    {{-- <div class="container"> --}}
-        <div class="sidebar-box text-end">
-            <h2>Kopi Miaaaaaaw</h2>
-            <p>Content of the box goes here</p>
+    <div class="container-fluid">
+        <div class="row row-cols-2">
+            <div class="sidebar-box col text-end col-3">
+                <h2>Kopi Miaaaaaaw</h2>
+                <span>Content of the box goes here</span>
+            </div>
+            <div class="gallery">
+                <img src="{{ asset('foto_user') }}/Project1.png" alt="Gambar 1">
+                <img src="{{ asset('foto_user') }}/project2.png" alt="Gambar 2">
+                <img src="{{ asset('foto_user') }}/project4.jpg" alt="Gambar 3">
+                <img src="{{ asset('foto_user') }}/project4.jpg" alt="Gambar 3">
+                <img src="{{ asset('foto_user') }}/project4.jpg" alt="Gambar 3">
+                <img src="{{ asset('foto_user') }}/project4.jpg" alt="Gambar 3">
+                <img src="{{ asset('foto_user') }}/project4.jpg" alt="Gambar 3">
+                <img src="{{ asset('foto_user') }}/project4.jpg" alt="Gambar 3">
+                <img src="{{ asset('foto_user') }}/project4.jpg" alt="Gambar 3">
+                <img src="{{ asset('foto_user') }}/project4.jpg" alt="Gambar 3">
+            </div>
         </div>
-    {{-- </div> --}}
+    </div>
 
 </section>
 
