@@ -394,54 +394,98 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Sidebar detail project
+# Sidebar detail Project
 --------------------------------------------------------------*/
 .sidebar-box {
-    /* position: relative; */
-    height: 100vh;
+    height: auto;
     /* padding: 0; */
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.sidebar-box h2,
+.sidebar-box h4,
 p,
 span {
     padding-right: 20px;
 }
 
+ul {
+    list-style: none;
+}
+
+.card-tit {
+    height: auto;
+    width: 77% !important;
+    border: none;
+    margin-left: 90px;
+    font-size: 24px;
+    text-align: justify;
+    padding-top: 15px;
+}
+
+.card-deskripsi {
+    height: auto;
+    width: 77% !important;
+    border: none;
+    margin-left: 90px;
+    font-size: 12px;
+    text-align: justify;
+}
+
+.card-list {
+    height: auto;
+    width: 90% !important;
+    border: none;
+    margin-left: 50px;
+}
+
+.card-box {
+    position: relative;
+    float: left;
+    font-size: 12px;
+    font-family: proximanova-semibold;
+    text-align: left;
+    width: 60% !important;
+
+}
+
+.card-title {
+    position: relative;
+    width: 30% !important;
+    margin-right: 20px;
+    font-size: 12px;
+    text-align: left;
+    font-weight: bolder;
+    font-family: proximanova-semibold;
+}
 
 .gallery {
-    padding: 10px 20px 100% 40px;
-    display: flex;
+    padding: 10px 20px 40px;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
+    justify-content: space-between;
 
-  }
-  
-  .gallery img {
-    width: 235px;
+}
+
+.gallery img {
+    width: 230px;
     height: 170px;
     object-fit: cover;
     margin: 5px;
     margin-bottom: 10px;
-  }
-  
-  /* @media (min-width: 768px) {
-    .gallery img {
-      width: calc(33.33% - 10px);
-    }
-  }
-  
-  @media (min-width: 992px) {
-    .gallery img {
-      width: calc(25% - 10px);
-    }
-  } */
-  
+}
 
+@media (min-width: 768px) {
+    .gallery img {
+        width: calc(33.33% - 10px);
+    }
+}
 
+@media (min-width: 992px) {
+    .gallery img {
+        width: calc(32.50% - 10px);
+    }
+}
 
 
 /*--------------------------------------------------------------
@@ -537,7 +581,68 @@ h2 {
 }
 
 /*--------------------------------------------------------------
-# Sections Product
+# Sections Proyek
+--------------------------------------------------------------*/
+.card-project {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+}
+
+.card-sub {
+    position: relative;
+    float: left;
+    width: calc(100% + 5px);
+    height: auto;
+}
+
+.card-head img {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 3px;
+}
+
+.card-item {
+    height: auto;
+    width: 100%;
+    background-color: #F3FFF4;
+    padding: 4px 3px 0 0;
+    /* margin: 4px 3px 0 0; */
+}
+
+.card-item img {
+    height: 100%;
+    width: 100%;
+    border-radius: 3px;
+}
+.card-text {
+    padding-top: 0px;
+}
+
+.card-text span {
+    color: #4A4A4A;
+    font-size: 18px;
+    font-family: ProximaNova-Bold;
+    font-weight: bolder;
+}
+
+.card-text p {
+    color: #ABABAB;
+    font-size: 14px;
+    font-family: ProximaNova-Bold;
+    font-weight: bolder;
+}
+
+.card-project:hover {
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .25);
+    transition: all ease-in-out .3s;
+}
+
+/*--------------------------------------------------------------
+# Sections Project
 --------------------------------------------------------------*/
 .card {
     height: 460px;
@@ -562,22 +667,6 @@ h2 {
     font-size: 14px;
 }
 
-.card:hover {
-    background: linear-gradient(170deg, #fff, #CCB879, #128041);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, .25);
-    transition: all ease-in-out .3s;
-}
-
-.card:hover .card-body h4 {
-    color: #F3FFF4;
-    transition: all ease-in-out .3s;
-}
-
-.card:hover .card-body p {
-    color: #F3FFF4;
-    transition: all ease-in-out .3s;
-}
-
 .card-detail {
     position: absolute;
     right: 0;
@@ -595,6 +684,22 @@ h2 {
 .card-detail p {
     font-size: 14px;
     color: #000;
+}
+
+.card:hover {
+    background: linear-gradient(170deg, #fff, #CCB879, #128041);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .25);
+    transition: all ease-in-out .3s;
+}
+
+.card:hover .card-body h4 {
+    color: #F3FFF4;
+    transition: all ease-in-out .3s;
+}
+
+.card:hover .card-body p {
+    color: #F3FFF4;
+    transition: all ease-in-out .3s;
 }
 
 /*--------------------------------------------------------------

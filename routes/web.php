@@ -50,3 +50,7 @@ Route::controller(ArticleController::class)->group(function (){
 Route::get('/project/detail', function () {
     return view('user.project.v_detailproject');
 });
+
+Route::get('/project', function () {
+    return view('user.project.v_project');
+});

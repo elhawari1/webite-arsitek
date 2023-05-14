@@ -101,8 +101,9 @@
     <div class="container">
         <div class="row mb-5">
             <div class="col-12 text-center">
-                <h3>Product Global Persada</h3>
-                <span>Show all Projects</span>
+                <h3>Projects Global Persada</h3>
+                <a href="/project" style="color: #ababab; text-decoration: none; font-size: 14px; font-family: proximanova-semibold;"><span>Show all
+                        Projects</span></a>
             </div>
         </div>
         <div class="row">
@@ -255,8 +256,8 @@
 
 {{-- Project --}}
 <div class="container pt-3">
-    <h3 class="text-center">Project Global Persada</h3>
-    <p class="text-center">Show all Projects</p>
+    <h3 class="text-center">Product Global Persada</h3>
+    <p class="text-center">Show all Product</p>
 
     <div class="d-flex justify-content-around">
         <div class="card" style="width: 18rem;">
@@ -303,7 +304,7 @@
             </div>
         </div>
 
-        
+
     </div>
 
 </div>
