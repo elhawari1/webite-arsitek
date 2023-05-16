@@ -1,52 +1,47 @@
 @extends('layout_user.v_index')
 @section('content')
-<!-- ======= Hero Section ======= -->
 
+{{-- Hero --}}
 <section id="hero">
-    <div id="carouselExampleCaptions" class="carousel slide">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-        </div>
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="{{ asset('foto_user') }}/slider1.png" class="d-block w-100 img-hero" alt="...">
-                <div class="carousel-caption d-none d-md-block">
+                <div class="carousel-caption">
                     <h5>First slide label</h5>
                     <p>Some representative placeholder content for the first slide.</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="{{ asset('foto_user') }}/slider2.jpg" class="d-block w-100 img-hero" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Some representative placeholder content for the second slide.</p>
+                <div class="carousel-caption">
+                    <h5>First slide label</h5>
+                    <p>Some representative placeholder content for the first slide.</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="{{ asset('foto_user') }}/slider3.png" class="d-block w-100 img-hero" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Mutu</h5>
-                    <p>Lokal Cafe by Global Persada</p>
+                <div class="carousel-caption">
+                    <h5>First slide label</h5>
+                    <p>Some representative placeholder content for the first slide.</p>
                 </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
             data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-</section><!-- End Hero -->
+</section>
+
+{{-- End Hero --}}
+
 
 {{-- Layanan --}}
 <section id="layanan">
@@ -96,219 +91,195 @@
     </div>
 </section>
 
-{{-- Project --}}
-<section id="Project">
+{{-- Proyek --}}
+<section id='proyek'>
     <div class="container">
-        <div class="row mb-5">
-            <div class="col-12 text-center">
-                <h3>Projects Global Persada</h3>
-                <a href="/project" style="color: #ababab; text-decoration: none; font-size: 14px; font-family: proximanova-semibold;"><span>Show all
-                        Projects</span></a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4 mb-4">
-                <div class="card p-2" style="width: 22rem;">
-                    <img src="{{ asset('foto_user') }}/Project1.png" alt="">
-                    <div class="card-body text-center">
-                        <h4>Rumah Kaca</h4>
-                        <p class="mb-4 lh-sm">Rumah <br><span class="text-danger">Modern, Classis</span></p>
+        <h3 class="text-center">Project Global Persada</h3>
+        <p class="text-center">Show all Product</p>
+        <div class="row pt-2">
+            <div class="col-3">
+                <div class="card-project">
+
+                    <div class="card-head">
+                        <a href="">
+                            <img src="{{ asset('foto_user') }}/Project1.png" alt="">
+                        </a>
                     </div>
 
-                    <div class="card-detail d-flex justify-content-between px-5">
-                        <span>
-                            <img src="{{ asset('foto_user') }}/location.png" alt="" style="width: 27px; height: 20px;">
-                            Jakarta
-                            <p>Location</p>
-                        </span>
-                        <span>
-                            <img src="{{ asset('foto_user') }}/icon Design Style.png" alt=""
-                                style="width: 27px; height: 20px;">
-                            1000
-                            <p>Luas Bangunan</p>
-                        </span>
+                    <div class="card-sub d-flex">
+                        <div class="card-item">
+                            <img src="{{ asset('foto_user') }}/Project2.png" alt="">
+                        </div>
+                        <div class="card-item">
+                            <img src="{{ asset('foto_user') }}/Project3.jpg" alt="">
+                        </div>
+                        <div class="card-item">
+                            <img src="{{ asset('foto_user') }}/Project4.jpg" alt="">
+                        </div>
                     </div>
+
+                    <div class="card-text text-center">
+                        <span>Rumah Kaca</span>
+                        <p>Modern, Classic</p>
+                    </div>
+
                 </div>
             </div>
 
-            <div class="col-4 mb-4">
-                <div class="card p-2" style="width: 22rem;">
-                    <img src="{{ asset('foto_user') }}/Project1.png" alt="">
-                    <div class="card-body text-center">
-                        <h4>Rumah Kaca</h4>
-                        <p class="mb-4 lh-sm">Rumah <br><span class="text-danger">Modern, Classis</span></p>
+            <div class="col-3">
+                <div class="card-project">
+
+                    <div class="card-head">
+                        <img src="{{ asset('foto_user') }}/Project3.jpg" alt="">
                     </div>
 
-                    <div class="card-detail d-flex justify-content-between px-5">
-                        <span>
-                            <img src="{{ asset('foto_user') }}/location.png" alt="" style="width: 27px; height: 20px;">
-                            Jakarta
-                            <p>Location</p>
-                        </span>
-                        <span>
-                            <img src="{{ asset('foto_user') }}/icon Design Style.png" alt=""
-                                style="width: 27px; height: 20px;">
-                            1000
-                            <p>Luas Bangunan</p>
-                        </span>
+                    <div class="card-sub d-flex">
+                        <div class="card-item">
+                            <img src="{{ asset('foto_user') }}/Project4.jpg" alt="">
+                        </div>
+                        <div class="card-item">
+                            <img src="{{ asset('foto_user') }}/Project1.png" alt="">
+                        </div>
+                        <div class="card-item">
+                            <img src="{{ asset('foto_user') }}/Project2.png" alt="">
+                        </div>
                     </div>
+
+                    <div class="card-text text-center">
+                        <span>Modern, Classis</span>
+                        <p>Rumah Kaca</p>
+                    </div>
+
                 </div>
             </div>
 
-            <div class="col-4 mb-4">
-                <div class="card p-2" style="width: 22rem;">
-                    <img src="{{ asset('foto_user') }}/Project1.png" alt="">
-                    <div class="card-body text-center">
-                        <h4>Rumah Kaca</h4>
-                        <p class="mb-4 lh-sm">Rumah <br><span class="text-danger">Modern, Classis</span></p>
+            <div class="col-3">
+                <div class="card-project">
+
+                    <div class="card-head">
+                        <img src="{{ asset('foto_user') }}/Project2.png" alt="">
                     </div>
 
-                    <div class="card-detail d-flex justify-content-between px-5">
-                        <span>
-                            <img src="{{ asset('foto_user') }}/location.png" alt="" style="width: 27px; height: 20px;">
-                            Jakarta
-                            <p>Location</p>
-                        </span>
-                        <span>
-                            <img src="{{ asset('foto_user') }}/icon Design Style.png" alt=""
-                                style="width: 27px; height: 20px;">
-                            1000
-                            <p>Luas Bangunan</p>
-                        </span>
+                    <div class="card-sub d-flex">
+                        <div class="card-item">
+                            <img src="{{ asset('foto_user') }}/Project1.png" alt="">
+                        </div>
+                        <div class="card-item">
+                            <img src="{{ asset('foto_user') }}/Project3.jpg" alt="">
+                        </div>
+                        <div class="card-item">
+                            <img src="{{ asset('foto_user') }}/Project4.jpg" alt="">
+                        </div>
                     </div>
+
+                    <div class="card-text text-center">
+                        <span>Modern, Classis</span>
+                        <p>Rumah Kaca</p>
+                    </div>
+
                 </div>
             </div>
 
-            <div class="col-4 mb-4">
-                <div class="card p-2" style="width: 22rem;">
-                    <img src="{{ asset('foto_user') }}/Project1.png" alt="">
-                    <div class="card-body text-center">
-                        <h4>Rumah Kaca</h4>
-                        <p class="mb-4 lh-sm">Rumah <br><span class="text-danger">Modern, Classis</span></p>
+            <div class="col-3">
+                <div class="card-project">
+
+                    <div class="card-head">
+                        <img src="{{ asset('foto_user') }}/Project4.jpg" alt="">
                     </div>
 
-                    <div class="card-detail d-flex justify-content-between px-5">
-                        <span>
-                            <img src="{{ asset('foto_user') }}/location.png" alt="" style="width: 27px; height: 20px;">
-                            Jakarta
-                            <p>Location</p>
-                        </span>
-                        <span>
-                            <img src="{{ asset('foto_user') }}/icon Design Style.png" alt=""
-                                style="width: 27px; height: 20px;">
-                            1000
-                            <p>Luas Bangunan</p>
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-4 mb-4">
-                <div class="card p-2" style="width: 22rem;">
-                    <img src="{{ asset('foto_user') }}/Project1.png" alt="">
-                    <div class="card-body text-center">
-                        <h4>Rumah Kaca</h4>
-                        <p class="mb-4 lh-sm">Rumah <br><span class="text-danger">Modern, Classis</span></p>
+                    <div class="card-sub d-flex">
+                        <div class="card-item">
+                            <img src="{{ asset('foto_user') }}/Project3.jpg" alt="">
+                        </div>
+                        <div class="card-item">
+                            <img src="{{ asset('foto_user') }}/Project2.png" alt="">
+                        </div>
+                        <div class="card-item">
+                            <img src="{{ asset('foto_user') }}/Project1.png" alt="">
+                        </div>
                     </div>
 
-                    <div class="card-detail d-flex justify-content-between px-5">
-                        <span>
-                            <img src="{{ asset('foto_user') }}/location.png" alt="" style="width: 27px; height: 20px;">
-                            Jakarta
-                            <p>Location</p>
-                        </span>
-                        <span>
-                            <img src="{{ asset('foto_user') }}/icon Design Style.png" alt=""
-                                style="width: 27px; height: 20px;">
-                            1000
-                            <p>Luas Bangunan</p>
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-4 mb-4">
-                <div class="card p-2" style="width: 22rem;">
-                    <img src="{{ asset('foto_user') }}/Project1.png" alt="">
-                    <div class="card-body text-center">
-                        <h4>Rumah Kaca</h4>
-                        <p class="mb-4 lh-sm">Rumah <br><span class="text-danger">Modern, Classis</span></p>
+                    <div class="card-text text-center">
+                        <span>Modern, Classis</span>
+                        <p>Rumah Kaca</p>
                     </div>
 
-                    <div class="card-detail d-flex justify-content-between px-5">
-                        <span>
-                            <img src="{{ asset('foto_user') }}/location.png" alt="" style="width: 27px; height: 20px;">
-                            Jakarta
-                            <p>Location</p>
-                        </span>
-                        <span>
-                            <img src="{{ asset('foto_user') }}/icon Design Style.png" alt=""
-                                style="width: 27px; height: 20px;">
-                            1000
-                            <p>Luas Bangunan</p>
-                        </span>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+{{-- End Proyek --}}
 
-{{-- Project --}}
-<div class="container pt-3">
-    <h3 class="text-center">Product Global Persada</h3>
-    <p class="text-center">Show all Product</p>
 
-    <div class="d-flex justify-content-around">
-        <div class="card" style="width: 18rem;">
-            <img src="{{ asset('foto_user') }}/pj1.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                    the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+{{-- Product --}}
+<section id='product'>
+    <div class="container">
+        <h3 class="text-center pt-2">Product Global Persada</h3>
+        <p class="text-center">Show all Product</p>
+        <div class="row pt-2">
+
+            <div class="col-3">
+                <div class="card-project">
+                    <div class="card-head">
+                        <a href="">
+                            <img src="{{ asset('foto_user') }}/product/cat.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="card-text text-center">
+                        <span>Kaleng Cat</span>
+                        <p>Cat</p>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="card" style="width: 18rem;">
-            <img src="{{ asset('foto_user') }}/pj1.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                    the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="col-3">
+                <div class="card-project">
+                    <div class="card-head">
+                        <a href="">
+                            <img src="{{ asset('foto_user') }}/product/kursi.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="card-text text-center">
+                        <span>Kursi</span>
+                        <p>Kursi Putih</p>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="card" style="width: 18rem;">
-            <img src="{{ asset('foto_user') }}/pj1.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                    the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="col-3">
+                <div class="card-project">
+                    <div class="card-head">
+                        <a href="">
+                            <img src="{{ asset('foto_user') }}/product/taman.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="card-text text-center">
+                        <span>Taman</span>
+                        <p>Teak and Mahogany</p>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="card" style="width: 18rem;">
-            <img src="{{ asset('foto_user') }}/pj1.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                    the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="col-3">
+                <div class="card-project">
+                    <div class="card-head">
+                        <a href="">
+                            <img src="{{ asset('foto_user') }}/product/kanal-c.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="card-text text-center">
+                        <span>Kanal-C</span>
+                        <p>Alumunium</p>
+                    </div>
+                </div>
             </div>
+
         </div>
-
-
     </div>
+</section>
 
-</div>
-{{-- end card --}}
+{{-- End Product --}}
 
 <section id="contact" class="contact">
     <div class="container" data-aos="fade-up">

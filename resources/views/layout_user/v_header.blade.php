@@ -6,7 +6,7 @@
         <ul>
           <li><a class="nav-link scrollto" href="/">Home</a></li>
           <li><a class="nav-link scrollto" href="/project">Project</a></li>
-          <li><a class="nav-link scrollto" href="#services">Product</a></li>
+          <li><a class="nav-link scrollto" href="/product">Product</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

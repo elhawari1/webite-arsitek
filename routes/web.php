@@ -54,3 +54,8 @@ Route::get('/project/detail', function () {
 Route::get('/project', function () {
     return view('user.project.v_project');
 });
+
+Route::get('/product', function () {
+    return view('user.product.v_product');
+});
+
