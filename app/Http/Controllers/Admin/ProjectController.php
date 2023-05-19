@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Models\Admin\ProductModel;
 use App\Models\Admin\ProjectModel;
 use App\Http\Controllers\Controller;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->ProjectModel = new ProjectModel();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +20,7 @@ class ProjectController extends Controller
     public function index()
     {
         $data=[
-            'project' => ProjectModel::all()
+            'project' => $this->ProjectModel->allData()
         ];
         return view('admin.project.v_project', $data);
     }
@@ -38,9 +41,10 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $request->validate([
+
+     public function store(Request $request)
+     {
+        $validated = $request->validate([
             'title' => 'required',
             'type' => 'required',
             'area_size' => 'required',
@@ -49,38 +53,29 @@ class ProjectController extends Controller
             'status' => 'required',
             'date' => 'required',
             'description' => 'required',
-            'image' => 'required',
+            'image' => 'required|mimes:jpg,jpeg,bmp,png',
         ]);
-        
-            $title = $request->title;
-            $type = $request->type;
-            $area_size = $request->area_size;
-            $design_style = $request->design_style;
-            $address = $request->address;
-            $status = $request->status;
-            $date = $request->date;
-            $description = $request->description;
-            $image = $request->image;
 
-            try {
-                $pjt = new ProjectModel;
-                $hh = new ProductModel;
-                $pjt->title = $title;
-                $pjt->type =$type;
-                $pjt->area_size = $area_size;
-                $pjt->design_style = $design_style;
-                $pjt->address = $address;
-                $pjt->status = $status;
-                $pjt->date = $date;
-                $pjt->description = $description;
-                $pjt->image = $image;
-                $pjt->save();
-                echo 'Data Berhasil Disimpan';
-            } catch (Throwable $th) {
-                echo $th;
-            }
-            
-    }
+         $image_file = $request->file('image');
+         $image_extension = $image_file->extension();
+         $image_name = $request->title . "." . $image_extension;
+         $path = $request->file('image')->storeAs('image_admin/project', $image_name);
+        
+         $data = [
+            'title' => Request()->title,
+            'type' => Request()->type,
+            'area_size' => Request()->area_size,
+            'design_style' => Request()->design_style,
+            'address' => Request()->address,
+            'status' => Request()->status,
+            'date' => Request()->date,
+            'description' => Request()->description,
+            'image' => $path,
+        ];
+ 
+         $this->ProjectModel->insertData($data);
+         return redirect()->route('project')->with('pesan', 'Data Berhasil Di Tambahkan');
+     }
 
     /**
      * Display the specified resource.
@@ -88,9 +83,12 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_project)
     {
-        //
+        $data=[
+            'project' => $this->ProjectModel->detailData($id_project)
+        ];
+        return view('admin.project.v_showproject',$data);
     }
 
     /**
@@ -99,9 +97,12 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_project)
     {
-        //
+        $data=[
+            'project' => $this->ProjectModel->detailData($id_project)
+        ];
+        return view('admin.project.v_editproject', $data);
     }
 
     /**
@@ -111,7 +112,7 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_project)
     {
         //
     }

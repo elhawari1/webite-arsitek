@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #4472ca">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #128041">
     <!-- Brand Logo -->
     <a href="/admin" class="brand-link">
       <img src="{{ asset('foto_admin') }}/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -49,14 +49,14 @@
             </a>
           </li>
 
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="/article" class="nav-link">
               <font style="color: white;">
                 <i class="nav-icon fas fa-newspaper"></i>
                 <p>Articel</p>
               </font>
             </a>
-          </li>
+          </li> --}}
 
         </ul>
       </nav>

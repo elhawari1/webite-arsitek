@@ -13,7 +13,7 @@
                 </ol>
             </div><!-- /.col -->
             <div class="ml-auto">
-                <a href="/project/create" class="btn btn-outline-primary" style="float: right">Add Project</i></a>
+                <a href="/admin/project/create" class="btn btn-outline-primary" style="float: right">Add Project</i></a>
             </div>
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -44,12 +44,19 @@
                     <tbody>
                         @foreach ($project as $data)
                         <tr>
-                            <th>{{ $loop->iteration }}</th>
-                            <th>{{ $data->title }}</th>
-                            <th>{{ $data->type }}</th>
-                            <th>{{ $data->address }}</th>
-                            <th>{{ $data->date }}</th>
-                            <th>Action</th>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $data->title }}</td>
+                            <td>{{ $data->type }}</td>
+                            <td>{{ $data->address }}</td>
+                            <td>{{ $data->date }}</td>
+                            <td>
+                                <a href="/admin/project/show/{{ $data->id_project }}" class="btn btn-outline-primary"><i
+                                        class="icon fa fa-info" title="Detail"></i></a>
+                                <a href="/admin/project/edit/{{ $data->id_project }}" class="btn btn-outline-warning"><i class="icon fa fa-edit" title="Edit"></i></a>
+                                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete">
+                                    <i class="icon fa fa-trash" title="Hapus"></i>
+                                </button>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

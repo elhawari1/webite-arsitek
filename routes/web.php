@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -30,19 +29,20 @@ Route::get('/admin', [DashboardController::class, 'index'])->name('admin');
 
 Route::controller(ProjectController::class)->group(function (){
     Route::get('/admin/project', 'index')->name('project');
-    Route::get('/project/create', 'create');
-    Route::post('/project/store', 'store');
+    Route::get('/admin/project/create', 'create');
+    Route::post('/admin/project/store', 'store');
+    Route::get('/admin/project/show/{id_project}', 'show');
+    Route::get('/admin/project/edit/{id_project}', 'edit');
+    Route::get('/admin/project/update/{id_project}', 'update');
+    Route::get('/admin/project/destroy/{id_project}', 'destroy');
 });
+
+// Route::post('/admin/project/store', [ProjectController::class, 'store']);
 
 Route::controller(ProductController::class)->group(function (){
-    Route::get('/admin/product', 'index')->name('product');
+    Route::get('/admin/product', 'index');
     Route::get('/product/add', 'add');
 
-});
-
-Route::controller(ArticleController::class)->group(function (){
-    Route::get('/article', 'index')->name('article');
-    Route::get('/article/add', 'add');
 });
 
 

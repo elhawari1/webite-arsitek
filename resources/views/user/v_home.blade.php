@@ -6,24 +6,21 @@
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('foto_user') }}/slider1.png" class="d-block w-100 img-hero" alt="...">
+                <img src="{{ asset('foto_user') }}/slider/masjid-smanda.jpeg" class="d-block w-100 img-hero" alt="...">
                 <div class="carousel-caption">
-                    <h5>First slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
+                    <h5>Masjid Smanda Pandaan</h5>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('foto_user') }}/slider2.jpg" class="d-block w-100 img-hero" alt="...">
+                <img src="{{ asset('foto_user') }}/slider/Pasar-Cenghoo-Pandaan.jpeg" class="d-block w-100 img-hero" alt="...">
                 <div class="carousel-caption">
-                    <h5>First slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
+                    <h5>Pasar Cenghoo Pandaan</h5>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('foto_user') }}/slider3.png" class="d-block w-100 img-hero" alt="...">
+                <img src="{{ asset('foto_user') }}/slider/Kantor BMKG Pasuruan.jpeg" class="d-block w-100 img-hero" alt="...">
                 <div class="carousel-caption">
-                    <h5>First slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
+                    <h5>Kantor BMKG Pasuruan</h5>
                 </div>
             </div>
         </div>
@@ -48,8 +45,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h2> Our Service</h2>
-                <span class="sub-title">Global Persada is here to be a solution for you</span>
+                <h3> Our Service</h3>
+                <p class="sub-title">Global Persada is here to be a solution for you</p>
             </div>
 
             <div class="row mt-5">
@@ -94,8 +91,12 @@
 {{-- Proyek --}}
 <section id='proyek'>
     <div class="container">
-        <h3 class="text-center">Project Global Persada</h3>
-        <p class="text-center">Show all Product</p>
+        <div class="title">
+            <h3 class="text-center">Project Global Persada</h3>
+            <a href="/project" style="text-decoration: none;">
+                <p class="text-center">Show all Product</p>
+            </a>
+        </div>
         <div class="row pt-2">
             <div class="col-3">
                 <div class="card-project">
@@ -215,8 +216,12 @@
 {{-- Product --}}
 <section id='product'>
     <div class="container">
+        <div class="title">
         <h3 class="text-center pt-2">Product Global Persada</h3>
-        <p class="text-center">Show all Product</p>
+            <a href="/product" style="text-decoration: none;">
+                <p class="text-center">Show all Product</p>
+            </a>
+        </div>
         <div class="row pt-2">
 
             <div class="col-3">

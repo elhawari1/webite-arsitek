@@ -37,7 +37,7 @@ h6 {
     right: 15px;
     bottom: 15px;
     z-index: 996;
-    background: #49b5e7;
+    background: #128041;
     width: 40px;
     height: 40px;
     border-radius: 4px;
@@ -645,6 +645,21 @@ h2 {
     box-shadow: 0 10px 20px rgba(0, 0, 0, .25);
     width: auto;
     transition: all ease-in-out .3s;
+}
+
+.title p {
+    color: #ababab;
+    text-decoration: none;
+    font-family: proximanova-semibold;
+    font-size: 14px;
+    letter-spacing: -.1px;
+}
+
+.title h3 {
+    font-family: 'ProximaNova-Bold';
+    font-size: 24px;
+    color: #4a4a4a;
+    letter-spacing: -.5px;
 }
 
 /*--------------------------------------------------------------
@@ -1365,8 +1380,8 @@ section {
 }
 
 .contact .info {
-    border-top: 3px solid #47b2e4;
-    border-bottom: 3px solid #47b2e4;
+    border-top: 3px solid #128041;
+    border-bottom: 3px solid #128041;
     padding: 30px;
     background: #fff;
     width: 100%;
@@ -1399,7 +1414,7 @@ section {
     padding: 0 0 10px 60px;
     margin-bottom: 20px;
     font-size: 14px;
-    color: #6182ba;
+    color: #128041;
 }
 
 .contact .info .email p {
@@ -1426,21 +1441,21 @@ section {
 }
 
 .contact .info .social-links a:hover {
-    background: #47b2e4;
+    background: #128041;
     color: #fff;
 }
 
 .contact .info .email:hover i,
 .contact .info .address:hover i,
 .contact .info .phone:hover i {
-    background: #47b2e4;
+    background: #128041;
     color: #fff;
 }
 
 .contact .php-email-form {
     width: 100%;
-    border-top: 3px solid #47b2e4;
-    border-bottom: 3px solid #47b2e4;
+    border-top: 3px solid #128041;
+    border-bottom: 3px solid #128041;
     padding: 30px;
     background: #fff;
     box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
@@ -1517,7 +1532,7 @@ section {
 
 .contact .php-email-form input:focus,
 .contact .php-email-form textarea:focus {
-    border-color: #47b2e4;
+    border-color: #128041;
 }
 
 .contact .php-email-form input {
@@ -1529,7 +1544,7 @@ section {
 }
 
 .contact .php-email-form button[type=submit] {
-    background: #47b2e4;
+    background: #128041;
     border: 0;
     padding: 12px 34px;
     color: #fff;
@@ -1538,7 +1553,7 @@ section {
 }
 
 .contact .php-email-form button[type=submit]:hover {
-    background: #209dd8;
+    background: #128041;
 }
 
 @keyframes animate-loading {
@@ -1612,7 +1627,7 @@ section {
 --------------------------------------------------------------*/
 #footer {
     font-size: 14px;
-    background: #37517e;
+    background: #128041;
 }
 
 #footer .footer-newsletter {

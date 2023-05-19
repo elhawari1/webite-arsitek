@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <h3>Arsha</h3>
+                    <h3>Global Persada</h3>
                     <p>
                         Jl. Pahlawan Sunaryo No.4 <br>
                         Pateban, Kb. Waris, Kec. Pandaan, Pasuruan<br>
@@ -24,7 +24,7 @@
                     </ul>
                 </div>
 
-                <div class="col-lg-3 col-md-6 footer-links">
+                {{-- <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Our Services</h4>
                     <ul>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
@@ -33,7 +33,7 @@
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
                     </ul>
-                </div>
+                </div> --}}
 
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Our Social Networks</h4>
@@ -53,10 +53,10 @@
 
     <div class="container footer-bottom clearfix">
         <div class="copyright">
-            &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved
-        </div>
+            &copy; Copyright <strong><span>Global Persada</span></strong>. All Rights Reserved
+        {{-- </div>
         <div class="credits">
             Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
+        </div> --}}
     </div>
 </footer>
