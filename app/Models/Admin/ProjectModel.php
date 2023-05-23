@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProjectModel extends Model
 {
-    // use HasFactory;
+    use HasFactory;
 
     // protected $table = 'tbl_project';
     // protected $primaryKey = 'id_project';

@@ -22,7 +22,7 @@ return new class extends Migration
         $table->string('address');
         $table->string('status');
         $table->date('date');
-        $table->string('description');
+        $table->text('description');
         $table->string('image');
         $table->timestamps();
         });

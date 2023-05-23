@@ -23,7 +23,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Projects Detail</h3>
+                <h3 class="card-title">Detail <b>{{ $project->title }}</b></h3>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -41,62 +41,66 @@
                         <tr>
                             <th width="100px">No</th>
                             <th width="100px">:</th>
-                            <th>{{ $project->id_project }}</th>
+                            <td>{{ $project->id_project }}</td>
                         </tr>
 
                         <tr>
                             <th width="100px">Title</th>
                             <th width="100px">:</th>
-                            <th>{{ $project->title }}</th>
+                            <td>{{ $project->title }}</td>
                         </tr>
 
                         <tr>
                             <th width="100px">Type</th>
                             <th width="100px">:</th>
-                            <th>{{ $project->type }}</th>
+                            <td>{{ $project->type }}</td>
                         </tr>
 
                         <tr>
                             <th width="100px">Area Size</th>
                             <th width="100px">:</th>
-                            <th>{{ $project->area_size }}</th>
+                            <td>{{ $project->area_size }}</td>
                         </tr>
 
                         <tr>
                             <th width="125px">Design Style</th>
                             <th width="100px">:</th>
-                            <th>{{ $project->design_style }}</th>
+                            <td>{{ $project->design_style }}</td>
                         </tr>
 
                         <tr>
                             <th width="100px">Address</th>
                             <th width="100px">:</th>
-                            <th>{{ $project->address }}</th>
+                            <td>{{ $project->address }}</td>
                         </tr>
 
                         <tr>
                             <th width="100px">Status</th>
                             <th width="100px">:</th>
-                            <th>{{ $project->status }}</th>
+                            <td>{{ $project->status }}</td>
                         </tr>
 
                         <tr>
                             <th width="100px">Date</th>
                             <th width="100px">:</th>
-                            <th>{{ $project->date }}</th>
+                            <td>{{ $project->date }}</td>
                         </tr>
 
                         <tr>
                             <th width="100px">Description</th>
                             <th width="100px">:</th>
-                            <th>{{ $project->description }}</th>
+                            <td>{{ $project->description }}</td>
                         </tr>
 
-                        {{-- <tr>
-                                <th width="100px">Gambar</th>
-                                <th width="100px">:</th>
-                                <th><img src="{{ url('foto/project/'.$project->gambar) }}" width="400px"></th>
-                        </tr> --}}
+                        <tr>
+                            <th width="100px">Image Thumbnail</th>
+                            <th width="100px">:</th>
+                            @if($project->image)
+                            <td><img src="{{ asset('storage/'.$project->image) }}" width="400px"></td>
+                            @else
+                            <td><span class="badge badge-danger">No photos yet</span></td>
+                            @endif
+                        </tr>
                         <tr>
                             <th><a href="/admin/project" class="btn btn-success tbn-sm">Kembali</a></th>
                         </tr>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Admin\ProjectModel;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProjectController extends Controller
 {
@@ -114,7 +116,38 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id_project)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required',
+            'type' => 'required',
+            'area_size' => 'required',
+            'design_style' => 'required',
+            'address' => 'required',
+            'status' => 'required',
+            'date' => 'required',
+            'description' => 'required',
+            'image' => 'required|mimes:jpg,jpeg,bmp,png',
+        ]);
+
+        
+         $image_file = $request->file('image');
+         $image_extension = $image_file->extension();
+         $image_name = $request->title . "." . $image_extension;
+         $path = $request->file('image')->storeAs('image_admin/project', $image_name);
+        
+         $data = [
+            'title' => Request()->title,
+            'type' => Request()->type,
+            'area_size' => Request()->area_size,
+            'design_style' => Request()->design_style,
+            'address' => Request()->address,
+            'status' => Request()->status,
+            'date' => Request()->date,
+            'description' => Request()->description,
+            'image' => $path,
+        ];
+ 
+         $this->ProjectModel->insertData($data);
+         return redirect()->route('project')->with('pesan', 'Data Berhasil Di Tambahkan');
     }
 
     /**
@@ -123,8 +156,15 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_project)
     {
-        //
+        // Untuk Mengahupus gambar
+        $project = $this->ProjectModel->detailData($id_project);
+        $path = $project->image;
+       if ($path != null || $path != '') {
+        Storage::delete($path);
+       }
+        $this->ProjectModel->deleteData($id_project);
+        return redirect()->route('project')->with('pesan', 'Data Deleted Successfully');
     }
 }

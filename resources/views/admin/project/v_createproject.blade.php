@@ -8,7 +8,7 @@
             <div class="col-sm-6">
                 <h1 class="m-0">Add Project</h1>
                 <ol class="breadcrumb float-sm">
-                    <li class="breadcrumb-item active"><a href="/project">Project</a></li>
+                    <li class="breadcrumb-item active"><a href="/admin/project">Project</a></li>
                     <li class="breadcrumb-item">Add Project</li>
                 </ol>
             </div><!-- /.col -->
