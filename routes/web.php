@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\User\UserProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,12 @@ Route::get('/', function () {
 //     return view('layout_admin.v_index');
 // });
 
-Route::get('/admin', [DashboardController::class, 'index'])->name('admin');
+Route::controller(DashboardController::class, 'index')->group(function (){
+    Route::get('/admin', 'index')->name('admin');
+    Route::post('/admin/banner/store', 'store');
+    Route::put('/admin/banner/update/{id_banner}', 'update');
+    Route::get('/admin/banner/destroy/{id_banner}', 'destroy');
+});
 
 Route::controller(ProjectController::class)->group(function (){
     Route::get('/admin/project', 'index')->name('project');
@@ -46,16 +52,11 @@ Route::controller(ProductController::class)->group(function (){
 });
 
 
-// <-- Halaman User --> 
-Route::get('/project/detail', function () {
-    return view('user.project.v_detailproject');
-});
-
-Route::get('/project', function () {
-    return view('user.project.v_project');
+Route::controller(UserProjectController::class)->group(function (){
+    Route::get('/project', 'index');
+    Route::get('project/detail', 'show');
 });
 
 Route::get('/product', function () {
     return view('user.product.v_product');
 });
-

@@ -96,7 +96,7 @@
                             <th width="100px">Image Thumbnail</th>
                             <th width="100px">:</th>
                             @if($project->image)
-                            <td><img src="{{ asset('storage/'.$project->image) }}" width="400px"></td>
+                            <td><img src="{{ asset('storage/image_admin/project/'.$project->image) }}" width="400px"></td>
                             @else
                             <td><span class="badge badge-danger">No photos yet</span></td>
                             @endif

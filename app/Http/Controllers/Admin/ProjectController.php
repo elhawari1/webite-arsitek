@@ -58,9 +58,13 @@ class ProjectController extends Controller
             'image' => 'required|mimes:jpg,jpeg,bmp,png',
         ]);
 
+        //Retrieve uploaded image files
          $image_file = $request->file('image');
+        //Retrieves uploaded image file extension
          $image_extension = $image_file->extension();
+         //Form the name of the image file to be saved
          $image_name = $request->title . "." . $image_extension;
+         //Saves the image file to the specified storage directory
          $path = $request->file('image')->storeAs('image_admin/project', $image_name);
         
          $data = [
@@ -72,7 +76,7 @@ class ProjectController extends Controller
             'status' => Request()->status,
             'date' => Request()->date,
             'description' => Request()->description,
-            'image' => $path,
+            'image' => $image_name,
         ];
  
          $this->ProjectModel->insertData($data);
@@ -116,6 +120,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id_project)
     {
+
         $validated = $request->validate([
             'title' => 'required',
             'type' => 'required',
@@ -128,25 +133,40 @@ class ProjectController extends Controller
             'image' => 'required|mimes:jpg,jpeg,bmp,png',
         ]);
 
-        
-         $image_file = $request->file('image');
-         $image_extension = $image_file->extension();
-         $image_name = $request->title . "." . $image_extension;
-         $path = $request->file('image')->storeAs('image_admin/project', $image_name);
-        
-         $data = [
-            'title' => Request()->title,
-            'type' => Request()->type,
-            'area_size' => Request()->area_size,
-            'design_style' => Request()->design_style,
-            'address' => Request()->address,
-            'status' => Request()->status,
-            'date' => Request()->date,
-            'description' => Request()->description,
-            'image' => $path,
-        ];
- 
-         $this->ProjectModel->insertData($data);
+        if (Request()->image <> "") {
+            //if you want to change the photo
+            //upload image
+            $image_file = $request->file('image');
+            $image_extension = $image_file->extension();
+            $image_name = $request->title . "." . $image_extension;
+            $path = $request->file('image')->storeAs('image_admin/project', $image_name);
+
+            $data = [
+                'title' => Request()->title,
+                'type' => Request()->type,
+                'area_size' => Request()->area_size,
+                'design_style' => Request()->design_style,
+                'address' => Request()->address,
+                'status' => Request()->status,
+                'date' => Request()->date,
+                'description' => Request()->description,
+                'image' => $path,
+            ];
+            $this->ProjectModel->updateData($id_project, $data);
+        } else {
+            //if you don't want to change the photo
+            $data = [
+                'title' => Request()->title,
+                'type' => Request()->type,
+                'area_size' => Request()->area_size,
+                'design_style' => Request()->design_style,
+                'address' => Request()->address,
+                'status' => Request()->status,
+                'date' => Request()->date,
+                'description' => Request()->description,
+            ];
+            $this->ProjectModel->updateData($id_project, $data);
+        }
          return redirect()->route('project')->with('pesan', 'Data Berhasil Di Tambahkan');
     }
 
@@ -158,12 +178,15 @@ class ProjectController extends Controller
      */
     public function destroy($id_project)
     {
-        // Untuk Mengahupus gambar
+        // To delete an image
         $project = $this->ProjectModel->detailData($id_project);
-        $path = $project->image;
-       if ($path != null || $path != '') {
-        Storage::delete($path);
-       }
+        if ($project->image <> "") {
+                    unlink(public_path('storage/image_admin/project') . '/' . $project->image);
+                }
+        // if ($project->image != '') {
+        //             // Storage::delete($project->image);
+        //             Storage::disk('public')->delete('storage/image_admin/project' . '/' . $project->image);
+        //         }
         $this->ProjectModel->deleteData($id_project);
         return redirect()->route('project')->with('pesan', 'Data Deleted Successfully');
     }
