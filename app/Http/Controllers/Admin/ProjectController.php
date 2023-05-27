@@ -150,7 +150,7 @@ class ProjectController extends Controller
                 'status' => Request()->status,
                 'date' => Request()->date,
                 'description' => Request()->description,
-                'image' => $path,
+                'image' => $image_name,
             ];
             $this->ProjectModel->updateData($id_project, $data);
         } else {

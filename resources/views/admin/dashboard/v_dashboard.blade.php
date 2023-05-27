@@ -30,29 +30,32 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped" style="text-align: center">
                     <thead>
                         <tr>
                             <th>No</th>
                             <th>Title</th>
-                            <th>Image</th>
-                            <th>Action</th>
+                            <th style="width: 50%">Image</th>
+                            <th style="width: 12%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($banner as $data)
                         <tr>
-                            <td>1</td>
-                            <td>Masmsfsd</td>
-                            <td>Image</td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $data->title }}</td>
+                            <td><img src="{{ asset('storage/image_admin/banner/'.$data->image) }}" width="20%;"
+                                    height="10%"></td>
                             <td>
                                 <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
-                                    data-bs-target="#update"><i class="icon fa fa-edit" title="Edit"></i></button>
-                                <button type="button" class="btn btn-outline-danger" data-toggle="modal"
-                                    data-target="#delete">
+                                    data-bs-target="#update{{ $data->id_banner }}"><i class="icon fa fa-edit" title="Edit"></i></button>
+                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                                    data-bs-target="#delete{{ $data->id_banner }}">
                                     <i class="icon fa fa-trash" title="Hapus"></i>
                                 </button>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                     <tfoot>
                         <tr>
@@ -80,20 +83,21 @@
             </div>
             <div class="modal-body">
                 <form action="/admin/banner/store" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Title:</label>
-                        <input type="text" class="form-control" id="recipient-name" placeholder="Title">
+                        <input type="text" name="title" class="form-control" id="recipient-name" placeholder="Title">
                     </div>
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Image:</label>
                         <input id="input-fa" type="file" name="image" class="form-control file" value=""
                             data-browse-on-zone-click="true">
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="sumbit" class="btn btn-primary">Save</button>
+                    </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
             </div>
         </div>
     </div>
@@ -101,7 +105,8 @@
 <!-- End Inser -->
 
 <!-- Modal For Update Banner -->
-<div class="modal fade" id="update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach ($banner as $data)
+<div class="modal fade" id="update{{ $data->id_banner }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -109,26 +114,55 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/admin/banner/store" method="POST" enctype="multipart/form-data">
+                <form action="/admin/banner/update/{{ $data->id_banner }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Title:</label>
-                        <input type="text" class="form-control" id="recipient-name" placeholder="Title">
+                        <input type="text" class="form-control" name="title" id="recipient-name" placeholder="Title"
+                            value="{{ $data->title }}">
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class=" mb-3">
                         <label for="message-text" class="col-form-label">Image:</label>
-                        <input id="input-fa" type="file" name="image" class="form-control file" value=""
+                        <input id="input-fa" type="file" name="image" class="form-control file" value="{{ $data->image }}"
                             data-browse-on-zone-click="true">
+                    </div> --}}
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
             </div>
         </div>
     </div>
 </div>
+@endforeach
 <!-- End Update -->
+
+<!-- Modal For Delete Banner -->
+@foreach ($banner as $data)
+<div class="modal fade" id="delete{{ $data->id_banner }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $data->title }}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete the data ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="/admin/banner/destroy/{{ $data->id_banner }}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- End Delete -->
+
+
+
 
 
 @endsection

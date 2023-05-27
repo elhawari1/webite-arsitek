@@ -29,7 +29,7 @@ Route::get('/', function () {
 Route::controller(DashboardController::class, 'index')->group(function (){
     Route::get('/admin', 'index')->name('admin');
     Route::post('/admin/banner/store', 'store');
-    Route::put('/admin/banner/update/{id_banner}', 'update');
+    Route::post('/admin/banner/update/{id_banner}', 'update');
     Route::get('/admin/banner/destroy/{id_banner}', 'destroy');
 });
 
@@ -39,7 +39,7 @@ Route::controller(ProjectController::class)->group(function (){
     Route::post('/admin/project/store', 'store');
     Route::get('/admin/project/show/{id_project}', 'show');
     Route::get('/admin/project/edit/{id_project}', 'edit');
-    Route::get('/admin/project/update/{id_project}', 'update');
+    Route::post('/admin/project/update/{id_project}', 'update');
     Route::get('/admin/project/destroy/{id_project}', 'destroy');
 });
 

@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin\DashboardModel;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->DashboardModel = new DashboardModel();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard.v_dashboard');
+        $data=[
+            'banner' => $this->DashboardModel->allData()
+        ];
+        return view('admin.dashboard.v_dashboard', $data);
     }
 
     /**
@@ -44,19 +53,8 @@ class DashboardController extends Controller
             'image' => $image_name,
         ];
  
-         $this->ProjectModel->insertData($data);
-         return redirect()->route('project')->with('pesan', 'Data Berhasil Di Tambahkan');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+         $this->DashboardModel->insertData($data);
+         return redirect()->route('admin')->with('pesan', 'Data added successfully');
     }
 
     /**
@@ -66,9 +64,40 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_banner)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required',
+            'image' => 'mimes:jpg,jpeg,bmp,png',
+        ]);
+
+        if ($request->image != "") {
+            //if you want to change the photo
+            //upload image
+            $image_file = $request->file('image');
+            $image_extension = $image_file->extension();
+            $image_name = $request->title . "." . $image_extension;
+            $path = $request->file('image')->storeAs('image_admin/banner', $image_name);
+
+            // For Delete Image
+            $banner = $this->DashboardModel->detailData($id_banner);
+            if ($banner->image != '' || $banner->image = null) {
+                    unlink(public_path('storage/image_admin/banner') . '/' . $banner->image);
+                }
+
+            $data = [
+                'title' => Request()->title,
+                'image' => $image_name,
+            ];
+            $this->DashboardModel->updateData($id_banner, $data);
+        } else {
+            //if you don't want to change the photo
+            $data = [
+                'title' => Request()->title,
+            ];
+            $this->DashboardModel->updateData($id_banner, $data);
+        }
+        return redirect()->route('admin')->with('pesan', 'Data successfully updated');
     }
 
     /**
@@ -77,8 +106,14 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_banner)
     {
-        //
+        // To delete an image
+        $banner = $this->DashboardModel->detailData($id_banner);
+        if ($banner->image != '') {
+                    unlink(public_path('storage/image_admin/banner') . '/' . $banner->image);
+                }
+        $this->DashboardModel->deleteData($id_banner);
+        return redirect()->route('admin')->with('pesan', 'Data Deleted Successfully');
     }
 }
