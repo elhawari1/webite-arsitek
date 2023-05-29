@@ -55,18 +55,37 @@ class ProjectController extends Controller
             'status' => 'required',
             'date' => 'required',
             'description' => 'required',
-            'image' => 'required|mimes:jpg,jpeg,bmp,png',
+            'image_thumbnail' => 'required|mimes:jpg,jpeg,bmp,png',
+            'image_detail' => 'required|mimes:jpg,jpeg,bmp,png',
         ]);
 
+        // For Image Thumbnail
         //Retrieve uploaded image files
-         $image_file = $request->file('image');
+         $image_file = $request->file('image_thumbnail');
         //Retrieves uploaded image file extension
          $image_extension = $image_file->extension();
          //Form the name of the image file to be saved
          $image_name = $request->title . "." . $image_extension;
          //Saves the image file to the specified storage directory
-         $path = $request->file('image')->storeAs('image_admin/project', $image_name);
+         $path = $request->file('image_thumbnail')->storeAs('image_admin/project', $image_name);
         
+        // For Image Detail
+        $image_detail = array();
+        if ($files_detail = $request->file('image_detail')) {
+            foreach ($request->file('image_detail') as $images_detail) {
+                $extension = $images_detail->getClientOriginalExtension();
+                $imageName = $request->title . '_' . $request->id_project . '.' . $extension;
+                $images_detail->storeAs('image_admin/project_detail', $imageName);
+            }
+            // foreach ($files_detail as $file_detail) {
+            //     $extension_image = $file_detail->getClientOriginalExtension();
+            //     $name_image = $request->title . "." . $image_extension;
+                
+            // }
+        }
+
+
+
          $data = [
             'title' => Request()->title,
             'type' => Request()->type,
@@ -76,7 +95,8 @@ class ProjectController extends Controller
             'status' => Request()->status,
             'date' => Request()->date,
             'description' => Request()->description,
-            'image' => $image_name,
+            'image_thumbnail' => $image_name,
+            'image_detail' => $imageName,
         ];
  
          $this->ProjectModel->insertData($data);
@@ -130,17 +150,22 @@ class ProjectController extends Controller
             'status' => 'required',
             'date' => 'required',
             'description' => 'required',
-            'image' => 'required|mimes:jpg,jpeg,bmp,png',
+            'image_thumbnail' => 'mimes:jpg,jpeg,bmp,png',
         ]);
 
-        if (Request()->image <> "") {
+        if ($request->image_thumbnail != "") {
             //if you want to change the photo
             //upload image
-            $image_file = $request->file('image');
+            $image_file = $request->file('image_thumbnail');
             $image_extension = $image_file->extension();
             $image_name = $request->title . "." . $image_extension;
-            $path = $request->file('image')->storeAs('image_admin/project', $image_name);
+            $path = $request->file('image_thumbnail')->storeAs('image_admin/project', $image_name);
 
+            $project = $this->ProjectModel->detailData($id_project);
+            if ($project->image_thumbnail <> "") {
+                        unlink(public_path('storage/image_admin/project') . '/' . $project->image_thumbnail);
+                    }
+                    
             $data = [
                 'title' => Request()->title,
                 'type' => Request()->type,
@@ -150,7 +175,7 @@ class ProjectController extends Controller
                 'status' => Request()->status,
                 'date' => Request()->date,
                 'description' => Request()->description,
-                'image' => $image_name,
+                'image_thumbnail' => $image_name,
             ];
             $this->ProjectModel->updateData($id_project, $data);
         } else {

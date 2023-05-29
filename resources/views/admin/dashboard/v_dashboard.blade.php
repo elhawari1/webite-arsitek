@@ -121,11 +121,11 @@
                         <input type="text" class="form-control" name="title" id="recipient-name" placeholder="Title"
                             value="{{ $data->title }}">
                     </div>
-                    {{-- <div class=" mb-3">
+                    <div class=" mb-3">
                         <label for="message-text" class="col-form-label">Image:</label>
                         <input id="input-fa" type="file" name="image" class="form-control file" value="{{ $data->image }}"
                             data-browse-on-zone-click="true">
-                    </div> --}}
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save</button>

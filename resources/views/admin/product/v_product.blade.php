@@ -5,15 +5,15 @@
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2" style="align-items: flex-end">
-            <div class="col-sm-6">
+            <div class="col">
                 <h1 class="m-0">Product</h1>
                 <ol class="breadcrumb float-sm">
-                    <li class="breadcrumb-item"><a href="">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item active">Product</li>
                 </ol>
             </div><!-- /.col -->
-            <div class="ml-auto">
-                <a href="/product/add" class="btn btn-outline-primary" style="float: right">Add Product</i></a>
+            <div class="col ml-auto">
+                <a href="/admin/product/create" class="btn btn-outline-primary" style="float: right">Add Project</i></a>
             </div>
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->

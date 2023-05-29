@@ -80,10 +80,17 @@
                 </div>
                 <div class="container">
                     <h6>Image For Thumbnail</h6>
-                    <input id="input-fa" type="file" name="image" class="form-control file" value="{{ old('image') }}"
+                    <input id="input-fa" type="file" name="image_thumbnail" class="form-control file" value="{{ old('image_thumbnail') }}"
                         data-browse-on-zone-click="true">
-                    @error('image')<p class="tex text-danger">{{ $message }}</p>@enderror
+                    @error('image_thumbnail')<p class="tex text-danger">{{ $message }}</p>@enderror
                 </div>
+            </div>
+
+            <div class="form-group">
+                <h6>Image Detail</h6>
+                <input id="input-fa" type="file" name="image_detail[]" class="form-control file" value="{{ old('image_detail') }}"
+                    data-browse-on-zone-click="true" multiple>
+                @error('image_detail')<p class="tex text-danger">{{ $message }}</p>@enderror
             </div>
 
             <div class="form-group pt-3">

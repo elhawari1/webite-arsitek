@@ -23,7 +23,8 @@ return new class extends Migration
         $table->string('status');
         $table->date('date');
         $table->text('description');
-        $table->string('image');
+        $table->string('image_thumbnail');
+        $table->string('image_detail');
         $table->timestamps();
         });
     }

@@ -5,24 +5,15 @@
 <section id="hero">
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
+            @foreach ($banner as $data)
             <div class="carousel-item active">
-                <img src="{{ asset('foto_user') }}/slider/masjid-smanda.jpeg" class="d-block w-100 img-hero" alt="...">
+                <img src="{{ asset('storage/image_admin/banner/'.$data->image) }}" class="d-block w-100 img-hero"
+                    alt="...">
                 <div class="carousel-caption">
-                    <h5>Masjid Smanda Pandaan</h5>
+                    <h5>{{ $data->title }}</h5>
                 </div>
             </div>
-            <div class="carousel-item">
-                <img src="{{ asset('foto_user') }}/slider/Pasar-Cenghoo-Pandaan.jpeg" class="d-block w-100 img-hero" alt="...">
-                <div class="carousel-caption">
-                    <h5>Pasar Cenghoo Pandaan</h5>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('foto_user') }}/slider/Kantor BMKG Pasuruan.jpeg" class="d-block w-100 img-hero" alt="...">
-                <div class="carousel-caption">
-                    <h5>Kantor BMKG Pasuruan</h5>
-                </div>
-            </div>
+            @endforeach
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
             data-bs-slide="prev">
@@ -36,7 +27,6 @@
         </button>
     </div>
 </section>
-
 {{-- End Hero --}}
 
 
@@ -217,7 +207,7 @@
 <section id='product'>
     <div class="container">
         <div class="title">
-        <h3 class="text-center pt-2">Product Global Persada</h3>
+            <h3 class="text-center pt-2">Product Global Persada</h3>
             <a href="/product" style="text-decoration: none;">
                 <p class="text-center">Show all Product</p>
             </a>
@@ -318,8 +308,12 @@
                     </div>
 
                     <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7908.629818542986!2d112.704005!3d-7.649246999999999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7d9989ef95ce3%3A0x2c1faf611987b2ce!2sCV.%20Global%20Persada!5e0!3m2!1sid!2sus!4v1685335504117!5m2!1sid!2sus"
+                        frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    {{-- <iframe
                         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
-                        frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+                        frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe> --}}
                 </div>
 
             </div>
@@ -329,7 +323,7 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="name">Your Name</label>
-                            <input type="text" name="name" class="form-control" id="name" required>
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="name">Your Email</label>

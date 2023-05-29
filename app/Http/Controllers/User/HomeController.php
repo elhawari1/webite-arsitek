@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\DashboardModel;
 
-class ProductController extends Controller
+class HomeController extends Controller
 {
     public function __construct()
     {
-        # code...
+        $this->DashboardModel = new DashboardModel();
     }
-    
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +19,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.product.v_product');
+        $data = [
+            'banner' => $this->DashboardModel->allData()
+        ];
+
+        return view('user.v_home', $data);
     }
 
     /**
@@ -29,7 +33,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.v_createproduct');
+        //
     }
 
     /**
@@ -40,14 +44,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'title' => 'required',
-            'type' => 'required',
-            'width' => 'required',
-            'height' => 'required',
-            'colour' => 'required',
-            'image_thumbnail' => 'required|mimes:jpg,jpeg,bmp,png',
-        ]);
+        //
     }
 
     /**
@@ -56,7 +53,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id_product)
+    public function show($id)
     {
         //
     }
@@ -67,7 +64,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_product)
+    public function edit($id)
     {
         //
     }
@@ -79,7 +76,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_product)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -90,7 +87,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_product)
+    public function destroy($id)
     {
         //
     }

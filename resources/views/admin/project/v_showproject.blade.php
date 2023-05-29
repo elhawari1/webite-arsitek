@@ -101,10 +101,8 @@
                             <td><span class="badge badge-danger">No photos yet</span></td>
                             @endif
                         </tr>
-                        <tr>
-                            <th><a href="/admin/project" class="btn btn-success tbn-sm">Kembali</a></th>
-                        </tr>
                     </table>
+                    <a href="/admin/project" class="btn btn-success tbn-sm">Kembali</a>
 
                 </div><!-- /.container-fluid -->
 

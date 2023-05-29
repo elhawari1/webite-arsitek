@@ -17,23 +17,23 @@
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Useful Links</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Project</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Product</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Contact</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="/">Home</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="/project">Project</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="/product">Product</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#contact">Contact</a></li>
                     </ul>
                 </div>
 
-                {{-- <div class="col-lg-3 col-md-6 footer-links">
+                <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Our Services</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                        <li><i class="bx bx-chevron-right"></i>Building Design</li>
+                        <li><i class="bx bx-chevron-right"></i>Product</li>
+                        <li><i class="bx bx-chevron-right"></i>Consultation</li>
+                        {{-- <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li> --}}
                     </ul>
-                </div> --}}
+                </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Our Social Networks</h4>
@@ -42,8 +42,8 @@
                         <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                         <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
                         <a href="https://www.instagram.com/gpersada.studio/" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
-                        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                        {{-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a> --}}
+                        <a href="#" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
                     </div>
                 </div>
 

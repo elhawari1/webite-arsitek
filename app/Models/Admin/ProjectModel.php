@@ -30,9 +30,9 @@ class ProjectModel extends Model
         DB::table('tbl_project')->insert($data);
     }
 
-    public function updateData($id_project)
+    public function updateData($id_project, $data)
     {
-        return DB::table('tbl_project')->where('id_project', $id_project)->update();
+        return DB::table('tbl_project')->where('id_project', $id_project)->update($data);
     }
 
     public function deleteData($id_project)

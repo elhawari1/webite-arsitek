@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -17,14 +18,7 @@ use App\Http\Controllers\User\UserProjectController;
 |
 */
 
-Route::get('/', function () {
-    return view('user.v_home');
-});
-
-
-// Route::get('/admin2', function () {
-//     return view('layout_admin.v_index');
-// });
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::controller(DashboardController::class, 'index')->group(function (){
     Route::get('/admin', 'index')->name('admin');
@@ -43,11 +37,14 @@ Route::controller(ProjectController::class)->group(function (){
     Route::get('/admin/project/destroy/{id_project}', 'destroy');
 });
 
-// Route::post('/admin/project/store', [ProjectController::class, 'store']);
-
 Route::controller(ProductController::class)->group(function (){
     Route::get('/admin/product', 'index');
-    Route::get('/product/add', 'add');
+    Route::get('/admin/product/create', 'create');
+    Route::get('/admin/product/store', 'create');
+    Route::get('/admin/product/show{id_product}', 'show');
+    Route::get('/admin/product/edit{id_product}', 'edit');
+    Route::get('/admin/product/update{id_product}', 'update');
+    Route::get('/admin/product/destroy{id_product}', 'destroy');
 
 });
 
