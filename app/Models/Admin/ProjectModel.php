@@ -4,17 +4,17 @@ namespace App\Models\Admin;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Admin\DetailProjectModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProjectModel extends Model
 {
     use HasFactory;
 
-    // protected $table = 'tbl_project';
-    // protected $primaryKey = 'id_project';
-    // protected $fillable = ['title', 'type', 'area_size', 'design_style', 'address', 'status' ,'date', 'description', 'image'];
-    // // public $timestamps = false;
-
+    protected $table = 'tbl_project';
+    protected $primaryKey = 'id_project';
+    protected $fillable = ['title', 'type', 'area_size', 'design_style', 'address', 'status' ,'date', 'description', 'image_thumbnail'];
+    
     public function allData()
     {
         return DB::table('tbl_project')->get();
@@ -25,10 +25,13 @@ class ProjectModel extends Model
         return DB::table('tbl_project')->where('id_project', $id_project)->first();
     }
 
-    public function insertData($data)
+    //for insert tbl_detail_project
+    public function detailImage()
     {
-        DB::table('tbl_project')->insert($data);
+        return $this->hasMany(DetailProjectModel::class);
     }
+
+
 
     public function updateData($id_project, $data)
     {

@@ -94,8 +94,8 @@
             </div>
 
             <div class="form-group pt-3">
-                <a href="/admin/project" class="btn btn-danger btn">Kembali</a>
-                <button type="submit" class="btn btn-primary btn">Simpan</button>
+                <a href="/admin/project" class="btn btn-danger btn">Back</a>
+                <button type="submit" class="btn btn-primary btn">Save</button>
             </div>
         </form>
     </div>

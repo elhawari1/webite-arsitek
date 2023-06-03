@@ -24,7 +24,6 @@ return new class extends Migration
         $table->date('date');
         $table->text('description');
         $table->string('image_thumbnail');
-        $table->string('image_detail');
         $table->timestamps();
         });
     }

@@ -95,14 +95,30 @@
                         <tr>
                             <th width="100px">Image Thumbnail</th>
                             <th width="100px">:</th>
-                            @if($project->image)
-                            <td><img src="{{ asset('storage/image_admin/project/'.$project->image) }}" width="400px"></td>
+                            @if($project->image_thumbnail)
+                            <td><img src="{{ asset('storage/image_admin/project/'.$project->image_thumbnail) }}"
+                                    width="400px"></td>
                             @else
                             <td><span class="badge badge-danger">No photos yet</span></td>
                             @endif
                         </tr>
+
+                        @php
+                        $image_detail = DB::table('tbl_project')->where('id_project', 1)->first();
+                        $images = json_decode($image_detail->image_detail);
+                        @endphp
+                        <tr>
+                            <th width="100px">Image Detail</th>
+                            <th width="100px">:</th>
+                            @foreach ($images as $item)
+                            <td>
+                                <img src="{{ asset('storage/image_admin/project_detail/'.$item) }}"
+                                    style="height: 25px; width: 25px">
+                            </td>
+                            @endforeach
+                        </tr>
                     </table>
-                    <a href="/admin/project" class="btn btn-success tbn-sm">Kembali</a>
+                    <a href="/admin/project" class="btn btn-danger tbn-sm">Back</a>
 
                 </div><!-- /.container-fluid -->
 

@@ -53,8 +53,8 @@
             </div>
 
             <div class="form-group pt-5 text-center">
-                <a href="/admin/product" class="btn btn-danger btn">Kembali</a>
-                <button type="submit" class="btn btn-primary btn">Simpan</button>
+                <a href="/admin/product" class="btn btn-danger btn">Back</a>
+                <button type="submit" class="btn btn-primary btn">Save</button>
             </div>
         </form>
     </div>

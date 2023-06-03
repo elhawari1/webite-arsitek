@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin\ProjectModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Admin\DetailProjectModel;
 
 
 class ProjectController extends Controller
@@ -56,51 +57,53 @@ class ProjectController extends Controller
             'date' => 'required',
             'description' => 'required',
             'image_thumbnail' => 'required|mimes:jpg,jpeg,bmp,png',
-            'image_detail' => 'required|mimes:jpg,jpeg,bmp,png',
+            //for change to string
+            'image_detail.*' => 'required|mimes:jpg,jpeg,bmp,png',
         ]);
-
         // For Image Thumbnail
-        //Retrieve uploaded image files
-         $image_file = $request->file('image_thumbnail');
-        //Retrieves uploaded image file extension
-         $image_extension = $image_file->extension();
-         //Form the name of the image file to be saved
-         $image_name = $request->title . "." . $image_extension;
-         //Saves the image file to the specified storage directory
-         $path = $request->file('image_thumbnail')->storeAs('image_admin/project', $image_name);
-        
-        // For Image Detail
-        $image_detail = array();
-        if ($files_detail = $request->file('image_detail')) {
-            foreach ($request->file('image_detail') as $images_detail) {
-                $extension = $images_detail->getClientOriginalExtension();
-                $imageName = $request->title . '_' . $request->id_project . '.' . $extension;
-                $images_detail->storeAs('image_admin/project_detail', $imageName);
-            }
-            // foreach ($files_detail as $file_detail) {
-            //     $extension_image = $file_detail->getClientOriginalExtension();
-            //     $name_image = $request->title . "." . $image_extension;
-                
-            // }
+        if ($request->hasFile('image_thumbnail')) {
+            //Retrieve uploaded image files
+            $image_file = $request->file('image_thumbnail');
+            //Retrieves uploaded image file extension
+            $image_extension = $image_file->extension();
+            //Form the name of the image file to be saved
+            $image_name = $request->title . "." . $image_extension;
+            //Saves the image file to the specified storage directory
+            $path = $request->file('image_thumbnail')->storeAs('image_admin/project', $image_name);
+            
+            $project = new ProjectModel([
+                'title' => Request()->title,
+                'type' => Request()->type,
+                'area_size' => Request()->area_size,
+                'design_style' => Request()->design_style,
+                'address' => Request()->address,
+                'status' => Request()->status,
+                'date' => Request()->date,
+                'description' => Request()->description,
+                'image_thumbnail' => $image_name,
+            ]);
+            $project->save();
         }
 
-
-
-         $data = [
-            'title' => Request()->title,
-            'type' => Request()->type,
-            'area_size' => Request()->area_size,
-            'design_style' => Request()->design_style,
-            'address' => Request()->address,
-            'status' => Request()->status,
-            'date' => Request()->date,
-            'description' => Request()->description,
-            'image_thumbnail' => $image_name,
-            'image_detail' => $imageName,
-        ];
- 
-         $this->ProjectModel->insertData($data);
-         return redirect()->route('project')->with('pesan', 'Data Berhasil Di Tambahkan');
+        if ($request->hasFile('image_detail')) {
+            //Retrieve uploaded image files
+            $image_files = $request->file('image_detail');
+            foreach ($image_files as $fileImage) {
+            // $image_extension = $fileImage->extension();
+            //Form the name of the image file to be saved
+            $imageName = $project->title . '_' . $fileImage->getClientOriginalName();
+            $request['id_project'] = $project->id_project;
+            $request['image_detail'] = $imageName;
+            //Saves the image file to the specified storage directory
+            $fileImage->storeAs('image_admin/project_detail', $imageName);
+            DetailProjectModel::create([
+                'id_project' => $project->id_project,
+                'image_detail' => $imageName,
+            ]);
+            }
+            
+        }
+        return redirect()->route('project')->with('pesan', 'Data added successfully');
      }
 
     /**
@@ -203,6 +206,7 @@ class ProjectController extends Controller
      */
     public function destroy($id_project)
     {
+
         // To delete an image
         $project = $this->ProjectModel->detailData($id_project);
         if ($project->image <> "") {
