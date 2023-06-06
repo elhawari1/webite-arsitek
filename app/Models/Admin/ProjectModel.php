@@ -31,8 +31,6 @@ class ProjectModel extends Model
         return $this->hasMany(DetailProjectModel::class);
     }
 
-
-
     public function updateData($id_project, $data)
     {
         return DB::table('tbl_project')->where('id_project', $id_project)->update($data);

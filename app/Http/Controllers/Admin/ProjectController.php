@@ -7,6 +7,7 @@ use App\Models\Admin\ProjectModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Admin\DetailProjectModel;
+use Illuminate\Support\Facades\File;
 
 
 class ProjectController extends Controller
@@ -14,6 +15,8 @@ class ProjectController extends Controller
     public function __construct()
     {
         $this->ProjectModel = new ProjectModel();
+        $this->DetailProjectModel = new DetailProjectModel();
+
     }
     /**
      * Display a listing of the resource.
@@ -205,18 +208,20 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id_project)
-    {
+    {   
+        $project = ProjectModel::findOrFail($id_project);
 
-        // To delete an image
-        $project = $this->ProjectModel->detailData($id_project);
-        if ($project->image <> "") {
-                    unlink(public_path('storage/image_admin/project') . '/' . $project->image);
-                }
-        // if ($project->image != '') {
-        //             // Storage::delete($project->image);
-        //             Storage::disk('public')->delete('storage/image_admin/project' . '/' . $project->image);
-        //         }
-        $this->ProjectModel->deleteData($id_project);
+        if (File::exists('storage/image_admin/project'. '/' . $project->image_thumbnail) ) {
+            File::delete('storage/image_admin/project'. '/' . $project->image_thumbnail);
+            $project->delete();
+        }
+        $detail_project = DetailProjectModel::where('id_project',$project->id_project)->get();
+        foreach ($detail_project as $detail) {
+            if (File::exists('storage/image_admin/project_detail'. '/' . $detail->image_detail) ) {
+                File::delete('storage/image_admin/project_detail'. '/' . $detail->image_detail);
+                $this->DetailProjectModel->deleteData($id_project);
+            }
+        }
         return redirect()->route('project')->with('pesan', 'Data Deleted Successfully');
     }
 }
