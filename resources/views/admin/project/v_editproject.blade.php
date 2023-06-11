@@ -129,6 +129,34 @@
                     </div>
                 </div>
 
+                <h4>Image Thumbnail</h4>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="nav-icon fa fa-calendar-alt"></i></span>
+                    </div>
+                    <img src="{{ asset('storage/image_admin/project/'.$project->image_thumbnail) }}" width="400px">
+                    <div class="text-danger">
+                        @error('description')
+                        {{ $message }}
+                        @enderror
+                    </div>
+                </div>
+
+                <h4>Image Detail</h4>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="nav-icon fa fa-calendar-alt"></i></span>
+                    </div>
+                        @foreach ($detail_project as $item)
+                        <img src="{{ asset('storage/image_admin/project_detail/'.$item->image_detail) }}" style="height: 200px; width: 250px">
+                        @endforeach    
+                    <div class="text-danger">
+                        @error('description')
+                        {{ $message }}
+                        @enderror
+                    </div>
+                </div>
+
 
                 <div class="form-group">
                     <a href="/admin/project" class="btn btn-danger btn-sm">Kembali</a>

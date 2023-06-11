@@ -88,9 +88,9 @@
 
             <div class="form-group">
                 <h6>Image Detail</h6>
-                <input id="input-fa" type="file" name="image_detail[]" class="form-control file" value="{{ old('image_detail') }}"
+                <input id="input-fa" type="file" name="detailImage[]" class="form-control file" value="{{ old('detailImage') }}"
                     data-browse-on-zone-click="true" multiple>
-                @error('image_detail')<p class="tex text-danger">{{ $message }}</p>@enderror
+                @error('detailImage')<p class="tex text-danger">{{ $message }}</p>@enderror
             </div>
 
             <div class="form-group pt-3">

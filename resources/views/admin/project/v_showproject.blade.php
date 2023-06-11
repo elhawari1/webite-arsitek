@@ -23,7 +23,9 @@
 
         <div class="card">
             <div class="card-header">
+
                 <h3 class="card-title">Detail <b>{{ $project->title }}</b></h3>
+
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -38,6 +40,7 @@
                 <div class="container-fluid">
 
                     <table class="table" style="border: none">
+                        {{-- @foreach ($project as $data)                            --}}
                         <tr>
                             <th width="100px">No</th>
                             <th width="100px">:</th>
@@ -102,20 +105,17 @@
                             <td><span class="badge badge-danger">No photos yet</span></td>
                             @endif
                         </tr>
+                        {{-- @endforeach --}}
 
-                        @php
-                        $image_detail = DB::table('tbl_project')->where('id_project', 1)->first();
-                        $images = json_decode($image_detail->image_detail);
-                        @endphp
                         <tr>
                             <th width="100px">Image Detail</th>
                             <th width="100px">:</th>
-                            @foreach ($images as $item)
                             <td>
-                                <img src="{{ asset('storage/image_admin/project_detail/'.$item) }}"
-                                    style="height: 25px; width: 25px">
+                                @foreach ($detail_project as $item)
+                                <img src="{{ asset('storage/image_admin/project_detail/'.$item->image_detail) }}"
+                                    style="height: 200px; width: 250px">
+                                @endforeach
                             </td>
-                            @endforeach
                         </tr>
                     </table>
                     <a href="/admin/project" class="btn btn-danger tbn-sm">Back</a>

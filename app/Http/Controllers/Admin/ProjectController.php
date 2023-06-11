@@ -25,10 +25,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $data=[
-            'project' => $this->ProjectModel->allData()
-        ];
-        return view('admin.project.v_project', $data);
+        $project = ProjectModel::all();
+        return view('admin.project.v_project', ['project' => $project]);
     }
 
     /**
@@ -60,9 +58,10 @@ class ProjectController extends Controller
             'date' => 'required',
             'description' => 'required',
             'image_thumbnail' => 'required|mimes:jpg,jpeg,bmp,png',
-            //for change to string
+            // //for change to string
             'image_detail.*' => 'required|mimes:jpg,jpeg,bmp,png',
         ]);
+        
         // For Image Thumbnail
         if ($request->hasFile('image_thumbnail')) {
             //Retrieve uploaded image files
@@ -88,23 +87,16 @@ class ProjectController extends Controller
             $project->save();
         }
 
-        if ($request->hasFile('image_detail')) {
-            //Retrieve uploaded image files
-            $image_files = $request->file('image_detail');
+        if ($request->hasFile('detailImage')) {
+            $image_files = $request->file('detailImage');
             foreach ($image_files as $fileImage) {
-            // $image_extension = $fileImage->extension();
-            //Form the name of the image file to be saved
             $imageName = $project->title . '_' . $fileImage->getClientOriginalName();
             $request['id_project'] = $project->id_project;
             $request['image_detail'] = $imageName;
-            //Saves the image file to the specified storage directory
             $fileImage->storeAs('image_admin/project_detail', $imageName);
-            DetailProjectModel::create([
-                'id_project' => $project->id_project,
-                'image_detail' => $imageName,
-            ]);
-            }
+            DetailProjectModel::create($request->all());
             
+            }
         }
         return redirect()->route('project')->with('pesan', 'Data added successfully');
      }
@@ -117,10 +109,9 @@ class ProjectController extends Controller
      */
     public function show($id_project)
     {
-        $data=[
-            'project' => $this->ProjectModel->detailData($id_project)
-        ];
-        return view('admin.project.v_showproject',$data);
+        $detail_project = DetailProjectModel::all();
+        $project = ProjectModel::findOrFail($id_project);
+        return view('admin.project.v_showproject', compact('project', 'detail_project'));
     }
 
     /**
@@ -131,10 +122,9 @@ class ProjectController extends Controller
      */
     public function edit($id_project)
     {
-        $data=[
-            'project' => $this->ProjectModel->detailData($id_project)
-        ];
-        return view('admin.project.v_editproject', $data);
+        $detail_project = DetailProjectModel::all();
+        $project = ProjectModel::findOrFail($id_project);
+        return view('admin.project.v_editproject', compact('project', 'detail_project'));
     }
 
     /**
@@ -209,19 +199,24 @@ class ProjectController extends Controller
      */
     public function destroy($id_project)
     {   
-        $project = ProjectModel::findOrFail($id_project);
+        $detail_project = DetailProjectModel::where('id_project',$id_project)->get();
+        foreach ($detail_project as $detail) {
+            // dd($detail->id_detail_project);
+            if (File::exists('storage/image_admin/project_detail'. '/' . $detail->image_detail) ) {
+                File::delete('storage/image_admin/project_detail'. '/' . $detail->image_detail);
+                $hapus=DetailProjectModel::findOrFail($detail->id_detail_project);
+                $hapus->delete();
+                // $this->DetailProjectModel->deleteData($id_project);
+            }
+        }
 
+        //searches for the project data based on the $id_project
+        $project = ProjectModel::findOrFail($id_project);
         if (File::exists('storage/image_admin/project'. '/' . $project->image_thumbnail) ) {
             File::delete('storage/image_admin/project'. '/' . $project->image_thumbnail);
             $project->delete();
         }
-        $detail_project = DetailProjectModel::where('id_project',$project->id_project)->get();
-        foreach ($detail_project as $detail) {
-            if (File::exists('storage/image_admin/project_detail'. '/' . $detail->image_detail) ) {
-                File::delete('storage/image_admin/project_detail'. '/' . $detail->image_detail);
-                $this->DetailProjectModel->deleteData($id_project);
-            }
-        }
+        
         return redirect()->route('project')->with('pesan', 'Data Deleted Successfully');
     }
 }

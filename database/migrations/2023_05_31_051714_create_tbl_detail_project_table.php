@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tbl_detail_project', function (Blueprint $table) {
             $table->id('id_detail_project');
-            $table->foreignId('id_project')->constraint('tbl_project')->onDelete('id_project');
+            $table->foreignId('id_project')->constraint('tbl_project')->onDelete('cascade');
             $table->string('image_detail');
             $table->timestamps();
         });
