@@ -21,9 +21,4 @@ class DetailProjectModel extends Model
     {
         return $this->belongsTo(ProjectModel::class);
     }
-
-    public function detailProject($id_project)
-    {
-        return DB::table('tbl_detail_project')->where('id_project', $id_project)->first();
-    }
 }

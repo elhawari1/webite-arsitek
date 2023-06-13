@@ -136,59 +136,112 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id_project)
     {
-
         $validated = $request->validate([
-            'title' => 'required',
-            'type' => 'required',
-            'area_size' => 'required',
-            'design_style' => 'required',
-            'address' => 'required',
-            'status' => 'required',
-            'date' => 'required',
-            'description' => 'required',
             'image_thumbnail' => 'mimes:jpg,jpeg,bmp,png',
+            'image_detail.*' => 'mimes:jpg,jpeg,bmp,png',
         ]);
 
-        if ($request->image_thumbnail != "") {
-            //if you want to change the photo
-            //upload image
+       
+        $project = ProjectModel::findOrFail($id_project);
+        if($request->hasFile("image_thumbnail")){
+            if (File::exists('storage/image_admin/project'. '/' . $project->image_thumbnail) ) {
+                File::delete('storage/image_admin/project'. '/' . $project->image_thumbnail);
+            }
             $image_file = $request->file('image_thumbnail');
             $image_extension = $image_file->extension();
             $image_name = $request->title . "." . $image_extension;
             $path = $request->file('image_thumbnail')->storeAs('image_admin/project', $image_name);
-
-            $project = $this->ProjectModel->detailData($id_project);
-            if ($project->image_thumbnail <> "") {
-                        unlink(public_path('storage/image_admin/project') . '/' . $project->image_thumbnail);
-                    }
-                    
-            $data = [
-                'title' => Request()->title,
-                'type' => Request()->type,
-                'area_size' => Request()->area_size,
-                'design_style' => Request()->design_style,
-                'address' => Request()->address,
-                'status' => Request()->status,
-                'date' => Request()->date,
-                'description' => Request()->description,
+            
+            $project->update([
+                'title' => $request->title,
+                'type' => $request->type,
+                'area_size' => $request->area_size,
+                'design_style' => $request->design_style,
+                'address' => $request->address,
+                'status' => $request->status,
+                'date' => $request->date,
+                'description' => $request->description,
                 'image_thumbnail' => $image_name,
-            ];
-            $this->ProjectModel->updateData($id_project, $data);
-        } else {
-            //if you don't want to change the photo
-            $data = [
-                'title' => Request()->title,
-                'type' => Request()->type,
-                'area_size' => Request()->area_size,
-                'design_style' => Request()->design_style,
-                'address' => Request()->address,
-                'status' => Request()->status,
-                'date' => Request()->date,
-                'description' => Request()->description,
-            ];
-            $this->ProjectModel->updateData($id_project, $data);
+            ]);
+        }else {
+            $project->update([
+                    'title' => $request->title,
+                    'type' => $request->type,
+                    'area_size' => $request->area_size,
+                    'design_style' => $request->design_style,
+                    'address' => $request->address,
+                    'status' => $request->status,
+                    'date' => $request->date,
+                    'description' => $request->description,
+                ]);
         }
-         return redirect()->route('project')->with('pesan', 'Data Berhasil Di Tambahkan');
+    
+        $detail_project = DetailProjectModel::where('id_project',$id_project)->get();
+        if($request->hasFile("detailImage")){
+            $image_files = $request->file('detailImage');
+            foreach ($detail_project as $detail) {
+                if (File::exists('storage/image_admin/project_detail'. '/' . $detail->image_detail) ) {
+                    File::delete('storage/image_admin/project_detail'. '/' . $detail->image_detail);
+                    $hapus=DetailProjectModel::findOrFail($detail->id_detail_project);
+                    $hapus->delete();
+                }
+            }
+            foreach ($image_files as $fileImage) {
+                $imageName = $project->title . '_' . $fileImage->getClientOriginalName();
+                $request['id_project'] = $project->id_project;
+                $request['image_detail'] = $imageName;
+                $fileImage->storeAs('image_admin/project_detail', $imageName);
+                DetailProjectModel::create($request->all());
+
+            }
+            
+        }
+    
+        return redirect()->route('project')->with('pesan', 'Data Berhasil Di Update');
+
+
+
+        // $project = ProjectModel::findOrFail($id_project);
+        // if ($request->hasFile("image_thumbnail") != '') {
+      
+
+       
+        // } else {
+        //     $project->update([
+        //         'title' => $request->title,
+        //         'type' => $request->type,
+        //         'area_size' => $request->area_size,
+        //         'design_style' => $request->design_style,
+        //         'address' => $request->address,
+        //         'status' => $request->status,
+        //         'date' => $request->date,
+        //         'description' => $request->description,
+        //     ]);
+        // }
+
+        // if ($request->hasFile('detailImage')) {
+        //     $image_files = $request->file('detailImage');
+        //     foreach ($image_files as $fileImage) {
+        //         $imageName = $project->title . '_' . $fileImage->getClientOriginalName();
+        //         $request['id_project'] = $project->id_project;
+        //         $request['image_detail'] = $imageName;
+        //         $fileImage->storeAs('image_admin/project_detail', $imageName);
+        //     }
+
+        //     $detail_project = DetailProjectModel::where('id_project',$id_project)->get();
+        //     foreach ($detail_project as $detail) {
+        //         if ($detail->image_detail != '') {
+        //             File::delete('storage/image_admin/project_detail'. '/' . $detail->image_detail);
+        //         }
+        //     }
+        //     $detail = DetailProjectModel::where('id_project', $id_project)->first();
+        //     if ($detail) {
+        //         $detail->update(['image_detail' => $request->image_detail]);
+        //     }
+
+        // }
+    
+        // return redirect()->route('project')->with('pesan', 'Data Berhasil Di Update');
     }
 
     /**
@@ -201,12 +254,10 @@ class ProjectController extends Controller
     {   
         $detail_project = DetailProjectModel::where('id_project',$id_project)->get();
         foreach ($detail_project as $detail) {
-            // dd($detail->id_detail_project);
             if (File::exists('storage/image_admin/project_detail'. '/' . $detail->image_detail) ) {
                 File::delete('storage/image_admin/project_detail'. '/' . $detail->image_detail);
                 $hapus=DetailProjectModel::findOrFail($detail->id_detail_project);
                 $hapus->delete();
-                // $this->DetailProjectModel->deleteData($id_project);
             }
         }
 

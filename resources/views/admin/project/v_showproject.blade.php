@@ -40,7 +40,6 @@
                 <div class="container-fluid">
 
                     <table class="table" style="border: none">
-                        {{-- @foreach ($project as $data)                            --}}
                         <tr>
                             <th width="100px">No</th>
                             <th width="100px">:</th>
@@ -105,7 +104,6 @@
                             <td><span class="badge badge-danger">No photos yet</span></td>
                             @endif
                         </tr>
-                        {{-- @endforeach --}}
 
                         <tr>
                             <th width="100px">Image Detail</th>

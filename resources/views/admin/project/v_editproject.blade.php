@@ -20,6 +20,7 @@
 
         <form action="/admin/project/update/{{ $project->id_project }}" method="POST" enctype="multipart/form-data">
             @csrf
+
             <div class="content">
 
                 <h4>Title</h4>
@@ -27,8 +28,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="nav-icon fa fa-shopping-bag"></i></span>
                     </div>
-                    <input type="text" name="title" placeholder="Title Barang" class="form-control"
-                        value="{{ $project->title }}">
+                    <input type="text" name="title" class="form-control" value="{{ $project->title }}">
                     <div class="text-danger">
                         @error('title')
                         {{ $message }}
@@ -129,34 +129,40 @@
                     </div>
                 </div>
 
-                <h4>Image Thumbnail</h4>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="nav-icon fa fa-calendar-alt"></i></span>
+
+                <div class="col-sm-12">
+                    <div class="col-sm-4">
+                        <img src="{{ asset('storage/image_admin/project/'.$project->image_thumbnail) }}" width="100px">
                     </div>
-                    <img src="{{ asset('storage/image_admin/project/'.$project->image_thumbnail) }}" width="400px">
-                    <div class="text-danger">
-                        @error('description')
-                        {{ $message }}
-                        @enderror
+                    <div class="form-group">
+                        <h4>Image Thumbnail</h4>
+                        <input id="input-fa" type="file" name="image_thumbnail" class="form-control file"
+                            value="{{ old('image_thumbnail') }}" data-browse-on-zone-click="true">
+                        <div class="text-danger">
+                            @error('image_thumbnail')
+                            {{ $message }}
+                            @enderror
+                        </div>
                     </div>
                 </div>
 
-                <h4>Image Detail</h4>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="nav-icon fa fa-calendar-alt"></i></span>
-                    </div>
+                <div class="col-sm-12">
+                    <div class="col-sm">
                         @foreach ($detail_project as $item)
-                        <img src="{{ asset('storage/image_admin/project_detail/'.$item->image_detail) }}" style="height: 200px; width: 250px">
-                        @endforeach    
-                    <div class="text-danger">
-                        @error('description')
-                        {{ $message }}
-                        @enderror
+                        <img src="{{ asset('storage/image_admin/project_detail/'.$item->image_detail) }}" width="100px">
+                        @endforeach
+                    </div>
+                    <div class="form-group">
+                        <h4>Image Detail</h4>
+                        <input id="input-fa" type="file" name="detailImage[]" class="form-control file"
+                            value="{{ old('detailImage') }}" data-browse-on-zone-click="true" multiple>
+                        <div class="text-danger">
+                            @error('detailImage')
+                            {{ $message }}
+                            @enderror
+                        </div>
                     </div>
                 </div>
-
 
                 <div class="form-group">
                     <a href="/admin/project" class="btn btn-danger btn-sm">Kembali</a>
