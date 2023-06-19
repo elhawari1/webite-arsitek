@@ -9,11 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class DashboardModel extends Model
 {
     use HasFactory;
-
-    public function allData()
-    {
-        return DB::table('tbl_banner')->get();
-    }
+    protected $table ='tbl_banner';
+    protected $primaryKey = 'id_banner';
 
     public function detailData($id_banner)
     {

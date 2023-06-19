@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Admin\ProjectModel;
+use App\Models\Admin\DetailProjectModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Admin\DetailProjectModel;
 use Illuminate\Support\Facades\File;
 
 
@@ -198,8 +198,6 @@ class ProjectController extends Controller
         }
     
         return redirect()->route('project')->with('pesan', 'Data Berhasil Di Update');
-
-
 
         // $project = ProjectModel::findOrFail($id_project);
         // if ($request->hasFile("image_thumbnail") != '') {

@@ -3,15 +3,13 @@
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
+use App\Models\Admin\ProductModel;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\DashboardModel;
 
 class HomeController extends Controller
 {
-    public function __construct()
-    {
-        $this->DashboardModel = new DashboardModel();
-    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,11 +17,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = [
-            'banner' => $this->DashboardModel->allData()
-        ];
-
-        return view('user.v_home', $data);
+        $banner = DashboardModel::all();
+        $product = ProductModel::all();
+        return view('user.v_home', compact('banner', 'product'));
     }
 
     /**

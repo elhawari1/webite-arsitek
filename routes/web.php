@@ -38,13 +38,13 @@ Route::controller(ProjectController::class)->group(function (){
 });
 
 Route::controller(ProductController::class)->group(function (){
-    Route::get('/admin/product', 'index');
+    Route::get('/admin/product', 'index')->name('product');
     Route::get('/admin/product/create', 'create');
-    Route::get('/admin/product/store', 'create');
-    Route::get('/admin/product/show{id_product}', 'show');
-    Route::get('/admin/product/edit{id_product}', 'edit');
-    Route::get('/admin/product/update{id_product}', 'update');
-    Route::get('/admin/product/destroy{id_product}', 'destroy');
+    Route::post('/admin/product/store', 'store');
+    Route::get('/admin/product/show/{id_product}', 'show');
+    Route::get('/admin/product/edit/{id_product}', 'edit');
+    Route::post('/admin/product/update/{id_product}', 'update');
+    Route::get('/admin/product/destroy/{id_product}', 'destroy');
 
 });
 

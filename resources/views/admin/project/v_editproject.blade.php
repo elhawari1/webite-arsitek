@@ -166,7 +166,7 @@
 
                 <div class="form-group">
                     <a href="/admin/project" class="btn btn-danger btn-sm">Kembali</a>
-                    <button class="btn btn-primary btn-sm"> Simpan</button>
+                    <button type="submit" class="btn btn-primary btn-sm"> Simpan</button>
                 </div>
             </div>
         </form>

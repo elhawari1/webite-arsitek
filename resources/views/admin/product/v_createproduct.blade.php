@@ -18,9 +18,8 @@
 <section class="content">
     <div class="container-fluid">
         <!-- Info boxes -->
-        <form action="/admin/project/store" method="POST" enctype="multipart/form-data">
+        <form action="/admin/product/store" method="POST" enctype="multipart/form-data">
             @csrf
-
             <div class="d-flex justify-content-around pt-3">
                 <div class="container">
                     <h6>Title</h6>
@@ -32,11 +31,11 @@
                         value="{{ old('type') }}">
                     @error('type')<p class="tex text-danger">{{ $message }}</p>@enderror
                     <h6 class="pt-2">Width</h6>
-                    <input type="number" name="Width" placeholder="width" class="form-control"
+                    <input type="number" name="width" placeholder="Width" class="form-control"
                         value="{{ old('width') }}">
                     @error('width')<p class="tex text-danger">{{ $message }}</p>@enderror
                     <h6 class="pt-2">Height</h6>
-                    <input type="text" name="height" placeholder="Height" class="form-control"
+                    <input type="number" name="height" placeholder="Height" class="form-control"
                         value="{{ old('height') }}">
                     @error('height')<p class="tex text-danger">{{ $message }}</p>@enderror
                     <h6 class="pt-2">Colour</h6>
@@ -45,10 +44,9 @@
                     @error('colour')<p class="tex text-danger">{{ $message }}</p>@enderror
                 </div>
                 <div class="container">
-                    <h6>Image For Thumbnail</h6>
-                    <input id="input-fa" type="file" name="image_thumbnail"
-                        value="{{ old('image_thumbnail') }}" data-browse-on-zone-click="true">
-                    @error('image_thumbnail')<p class="tex text-danger">{{ $message }}</p>@enderror
+                    <h6>Image</h6>
+                    <input id="input-fa" type="file" name="image" value="{{ old('image') }}" class="form-control file" data-browse-on-zone-click="true">
+                    @error('image')<p class="tex text-danger">{{ $message }}</p>@enderror
                 </div>
             </div>
 

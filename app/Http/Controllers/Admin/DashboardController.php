@@ -20,10 +20,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $data=[
-            'banner' => $this->DashboardModel->allData()
-        ];
-        return view('admin.dashboard.v_dashboard', $data);
+        $banner = DashboardModel::all();
+        return view('admin.dashboard.v_dashboard', ['banner' => $banner]);
     }
 
     /**
