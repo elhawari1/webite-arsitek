@@ -21,12 +21,9 @@
 <section class="content">
     <div class="container-fluid">
 
-        <div class="card">
+        <div class="card card-primary">
             <div class="card-header">
-
                 <h3 class="card-title">Detail <b>{{ $project->title }}</b></h3>
-
-
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -111,7 +108,7 @@
                             <td>
                                 @foreach ($detail_project as $item)
                                 <img src="{{ asset('storage/image_admin/project_detail/'.$item->image_detail) }}"
-                                    style="height: 200px; width: 250px">
+                                    style="height: 200px; width: 200px; margin-right: 5px;">
                                 @endforeach
                             </td>
                         </tr>

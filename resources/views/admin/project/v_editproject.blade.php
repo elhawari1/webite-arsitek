@@ -5,10 +5,10 @@
     <div class="container-fluid">
         <div class="row mb-2" style="align-items: flex-end">
             <div class="col-sm-6">
-                <h1 class="m-0">Detail Project</h1>
+                <h1 class="m-0">Update Project</h1>
                 <ol class="breadcrumb float-sm">
                     <li class="breadcrumb-item"><a href="/admin/project">Project</a></li>
-                    <li class="breadcrumb-item active">Detail Project</li>
+                    <li class="breadcrumb-item active">Update Project</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -18,158 +18,145 @@
 <section class="content">
     <div class="container-fluid">
 
-        <form action="/admin/project/update/{{ $project->id_project }}" method="POST" enctype="multipart/form-data">
-            @csrf
-
-            <div class="content">
-
-                <h4>Title</h4>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="nav-icon fa fa-shopping-bag"></i></span>
-                    </div>
-                    <input type="text" name="title" class="form-control" value="{{ $project->title }}">
-                    <div class="text-danger">
-                        @error('title')
-                        {{ $message }}
-                        @enderror
-                    </div>
-                </div>
-
-
-                <h4>Type</h4>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="nav-icon fa fa-file-alt"></i></span>
-                    </div>
-                    <input type="text" name="type" class="form-control" value="{{ $project->type }}">
-                    <div class="text-danger">
-                        @error('type')
-                        {{ $message }}
-                        @enderror
-                    </div>
-                </div>
-
-
-                <h4>Area Size</h4>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="nav-icon fa fa-money-bill"></i></span>
-                    </div>
-                    <input type="number" name="area_size" class="form-control" value="{{ $project->area_size }}">
-                    <div class="text-danger">
-                        @error('area_size')
-                        {{ $message }}
-                        @enderror
-                    </div>
-                </div>
-
-                <h4>Design Style</h4>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="nav-icon fa fa-chart-line"></i></span>
-                    </div>
-                    <input type="text" name="design_style" class="form-control" value="{{ $project->design_style }}">
-                    <div class="text-danger">
-                        @error('design_style')
-                        {{ $message }}
-                        @enderror
-                    </div>
-                </div>
-
-                <h4>Address</h4>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="nav-icon fa fa-chart-line"></i></span>
-                    </div>
-                    <input type="text" name="address" class="form-control" value="{{ $project->address }}">
-                    <div class="text-danger">
-                        @error('address')
-                        {{ $message }}
-                        @enderror
-                    </div>
-                </div>
-
-                <h4>Status</h4>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="nav-icon fa fa-chart-line"></i></span>
-                    </div>
-                    <input type="text" name="status" class="form-control" value="{{ $project->status }}">
-                    <div class="text-danger">
-                        @error('status')
-                        {{ $message }}
-                        @enderror
-                    </div>
-                </div>
-
-                <h4>Date</h4>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="nav-icon fa fa-calendar-alt"></i></span>
-                    </div>
-                    <input type="date" name="date" class="form-control" value="{{ $project->date }}">
-                    <div class="text-danger">
-                        @error('date')
-                        {{ $message }}
-                        @enderror
-                    </div>
-                </div>
-
-                <h4>Description</h4>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="nav-icon fa fa-calendar-alt"></i></span>
-                    </div>
-                    <input type="text" name="description" class="form-control" value="{{ $project->description }}">
-                    <div class="text-danger">
-                        @error('description')
-                        {{ $message }}
-                        @enderror
-                    </div>
-                </div>
-
-
-                <div class="col-sm-12">
-                    <div class="col-sm-4">
-                        <img src="{{ asset('storage/image_admin/project/'.$project->image_thumbnail) }}" width="100px">
-                    </div>
-                    <div class="form-group">
-                        <h4>Image Thumbnail</h4>
-                        <input id="input-fa" type="file" name="image_thumbnail" class="form-control file"
-                            value="{{ old('image_thumbnail') }}" data-browse-on-zone-click="true">
-                        <div class="text-danger">
-                            @error('image_thumbnail')
-                            {{ $message }}
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-12">
-                    <div class="col-sm">
-                        @foreach ($detail_project as $item)
-                        <img src="{{ asset('storage/image_admin/project_detail/'.$item->image_detail) }}" width="100px">
-                        @endforeach
-                    </div>
-                    <div class="form-group">
-                        <h4>Image Detail</h4>
-                        <input id="input-fa" type="file" name="detailImage[]" class="form-control file"
-                            value="{{ old('detailImage') }}" data-browse-on-zone-click="true" multiple>
-                        <div class="text-danger">
-                            @error('detailImage')
-                            {{ $message }}
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <a href="/admin/project" class="btn btn-danger btn-sm">Kembali</a>
-                    <button type="submit" class="btn btn-primary btn-sm"> Simpan</button>
-                </div>
+        <div class="card card-warning card-outline">
+            <div class="card-header">
+                <h3 class="card-title">Update <b>{{ $project->title }}</b></h3>
             </div>
-        </form>
+            <div class="card-body">
+                <div class="container-fluid">
+                    <form action="/admin/project/update/{{ $project->id_project }}" method="POST"
+                        enctype="multipart/form-data">
+                        @csrf
+
+                        <div class="content">
+
+                            <div class="row">
+                                <div class="col">
+                                    <label for="recipient-name" class="col-form-label">Title</label>
+                                    <input type="text" name="title" class="form-control" value="{{ $project->title }}">
+                                    <div class="text-danger">
+                                        @error('title')
+                                        {{ $message }}
+                                        @enderror
+                                    </div>
+                                    <label for="recipient-name" class="col-form-label pt-2">Type</label>
+                                    <input type="text" name="type" class="form-control" value="{{ $project->type }}">
+                                    <div class="text-danger">
+                                        @error('type')
+                                        {{ $message }}
+                                        @enderror
+                                    </div>
+                                    <label for="recipient-name" class="col-form-label pt-2">Area Size</label>
+                                    <input type="number" name="area_size" class="form-control"
+                                        value="{{ $project->area_size }}">
+                                    <div class="text-danger">
+                                        @error('area_size')
+                                        {{ $message }}
+                                        @enderror
+                                    </div>
+                                    <label for="recipient-name" class="col-form-label pt-2">Design Style</label>
+                                    <input type="text" name="design_style" class="form-control"
+                                        value="{{ $project->design_style }}">
+                                    <div class="text-danger">
+                                        @error('design_style')
+                                        {{ $message }}
+                                        @enderror
+                                    </div>
+                                    <label for="recipient-name" class="col-form-label pt-2">Address</label>
+                                    <input type="text" name="address" class="form-control"
+                                        value="{{ $project->address }}">
+                                    <div class="text-danger">
+                                        @error('address')
+                                        {{ $message }}
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label for="recipient-name" class="col-form-label">Description</label>
+                                    <textarea name="description" id="" cols="81" rows="14" placeholder="Description"
+                                        class="form-control">{{ $project->description    }}</textarea>
+                                    <div class="text-danger">
+                                        @error('description')
+                                        {{ $message }}
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <label for="recipient-name" class="col-form-label pt-2">Date</label>
+                                    <input type="date" name="date" class="form-control" value="{{ $project->date }}">
+                                    <div class="text-danger">
+                                        @error('date')
+                                        {{ $message }}
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label for="recipient-name" class="col-form-label">Status</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" name="status" class="form-control"
+                                            value="{{ $project->status }}">
+                                        <div class="text-danger">
+                                            @error('status')
+                                            {{ $message }}
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <label for="recipient-name" class="col-form-label text-center pb-2">Image
+                                    Thumbnail</label>
+                                <div class="col">
+                                    <img src="{{ asset('storage/image_admin/project/'.$project->image_thumbnail) }}"
+                                        width="100%" height="350px">
+                                </div>
+                                <div class="col">
+                                    <input id="input-fa" type="file" name="image_thumbnail" class="form-control file"
+                                        value="{{ old('image_thumbnail') }}" data-browse-on-zone-click="true">
+                                    <div class="text-danger">
+                                        @error('image_thumbnail')
+                                        {{ $message }}
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="row pt-5">
+                                <h4 for="recipient-name" class="text-center pb-2"> <b> Image Detail</b></h4>
+                                @foreach ($detail_project as $item)
+                                <img src="{{ asset('storage/image_admin/project_detail/'.$item->image_detail) }}"
+                                    style="height: 250px; width: 350px">
+                                @endforeach
+                            </div>
+                            <div class="form-group">
+                                {{-- <h4>Image Detail</h4> --}}
+                                <input id="input-fa" type="file" name="detailImage[]" class="form-control file"
+                                    value="{{ old('detailImage') }}" data-browse-on-zone-click="true" multiple>
+                                <div class="text-danger">
+                                    @error('detailImage')
+                                    {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <a href="/admin/project" class="btn btn-danger btn-sm">Kembali</a>
+                            <button class="btn btn-primary btn-sm"> Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- /.container-fluid -->
+
+        </div>
+        <!-- /.card-body -->
+    </div>
 
     </div><!-- /.container-fluid -->
 </section>

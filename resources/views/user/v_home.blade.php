@@ -88,115 +88,37 @@
             </a>
         </div>
         <div class="row pt-2">
-            <div class="col-3">
-                <div class="card-project">
 
-                    <div class="card-head">
-                        <a href="">
-                            <img src="{{ asset('foto_user') }}/Project1.png" alt="">
-                        </a>
-                    </div>
-
-                    <div class="card-sub d-flex">
-                        <div class="card-item">
-                            <img src="{{ asset('foto_user') }}/Project2.png" alt="">
+            <div class="owl-carousel owl-theme col-3">
+                @foreach ($project as $data)
+                <div class="item">
+                    <div class="card-project">
+                        <div class="card-head">
+                            <a href="/project/detail/{{ $data->id_project }}">
+                                <img src="{{ asset('storage/image_admin/project/'.$data->image_thumbnail) }}" alt="">
+                            </a>
                         </div>
-                        <div class="card-item">
-                            <img src="{{ asset('foto_user') }}/Project3.jpg" alt="">
+                        <div class="card-sub d-flex">
+                            @php
+                            $filtered_detail_project = $detail_project->where('id_project', $data->id_project)->take(3);
+                            @endphp
+                            @foreach ($filtered_detail_project as $item)
+                            <div class="card-item">
+                                <img src="{{ asset('storage/image_admin/project_detail/'.$item->image_detail) }}"
+                                    alt="">
+                            </div>
+                            @endforeach
                         </div>
-                        <div class="card-item">
-                            <img src="{{ asset('foto_user') }}/Project4.jpg" alt="">
+                        <div class="card-text text-center">
+                            <span>{{ $data->title }}</span>
+                            <p>{{ $data->type }}</p>
                         </div>
-                    </div>
 
-                    <div class="card-text text-center">
-                        <span>Rumah Kaca</span>
-                        <p>Modern, Classic</p>
                     </div>
-
                 </div>
+                @endforeach
             </div>
 
-            <div class="col-3">
-                <div class="card-project">
-
-                    <div class="card-head">
-                        <img src="{{ asset('foto_user') }}/Project3.jpg" alt="">
-                    </div>
-
-                    <div class="card-sub d-flex">
-                        <div class="card-item">
-                            <img src="{{ asset('foto_user') }}/Project4.jpg" alt="">
-                        </div>
-                        <div class="card-item">
-                            <img src="{{ asset('foto_user') }}/Project1.png" alt="">
-                        </div>
-                        <div class="card-item">
-                            <img src="{{ asset('foto_user') }}/Project2.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="card-text text-center">
-                        <span>Modern, Classis</span>
-                        <p>Rumah Kaca</p>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-3">
-                <div class="card-project">
-
-                    <div class="card-head">
-                        <img src="{{ asset('foto_user') }}/Project2.png" alt="">
-                    </div>
-
-                    <div class="card-sub d-flex">
-                        <div class="card-item">
-                            <img src="{{ asset('foto_user') }}/Project1.png" alt="">
-                        </div>
-                        <div class="card-item">
-                            <img src="{{ asset('foto_user') }}/Project3.jpg" alt="">
-                        </div>
-                        <div class="card-item">
-                            <img src="{{ asset('foto_user') }}/Project4.jpg" alt="">
-                        </div>
-                    </div>
-
-                    <div class="card-text text-center">
-                        <span>Modern, Classis</span>
-                        <p>Rumah Kaca</p>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-3">
-                <div class="card-project">
-
-                    <div class="card-head">
-                        <img src="{{ asset('foto_user') }}/Project4.jpg" alt="">
-                    </div>
-
-                    <div class="card-sub d-flex">
-                        <div class="card-item">
-                            <img src="{{ asset('foto_user') }}/Project3.jpg" alt="">
-                        </div>
-                        <div class="card-item">
-                            <img src="{{ asset('foto_user') }}/Project2.png" alt="">
-                        </div>
-                        <div class="card-item">
-                            <img src="{{ asset('foto_user') }}/Project1.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="card-text text-center">
-                        <span>Modern, Classis</span>
-                        <p>Rumah Kaca</p>
-                    </div>
-
-                </div>
-            </div>
         </div>
     </div>
 </section>
@@ -213,27 +135,26 @@
             </a>
         </div>
         <div class="row pt-2">
-
-            @foreach ($product as $data)
-                
-            <div class="col-3">
-                <div class="card-project">
-                    <div class="card-head">
-                        <a href="">
-                            <img src="{{ asset('storage/image_admin/product/'.$data->image) }}" alt="">
-                        </a>
-                    </div>
-                    <div class="card-text text-center">
-                        <span>{{ $data->title }}</span>
-                        <p>{{ $data->type }}</p>
+            <div class="owl-carousel owl-theme col-3">
+                @foreach ($product as $data)
+                <div class="item">
+                    <div class="card-project">
+                        <div class="card-head">
+                            <a href="#">
+                                <img src="{{ asset('storage/image_admin/product/'.$data->image) }}" alt="">
+                            </a>
+                        </div>
+                        <div class="card-text text-center">
+                            <span>{{ $data->title }}</span>
+                            <p>{{ $data->type }}</p>
+                        </div>
                     </div>
                 </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
     </div>
 </section>
-
 {{-- End Product --}}
 
 <section id="contact" class="contact">
@@ -245,7 +166,6 @@
         </div>
 
         <div class="row">
-
             <div class="col-lg-5 d-flex align-items-stretch">
                 <div class="info">
                     <div class="address">
@@ -283,7 +203,8 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="name">Your Name</label>
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
+                                required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="name">Your Email</label>
@@ -306,7 +227,6 @@
                     <div class="text-center"><button type="submit">Send Message</button></div>
                 </form>
             </div>
-
         </div>
 
     </div>

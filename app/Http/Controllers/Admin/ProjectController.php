@@ -109,8 +109,8 @@ class ProjectController extends Controller
      */
     public function show($id_project)
     {
-        $detail_project = DetailProjectModel::all();
         $project = ProjectModel::findOrFail($id_project);
+        $detail_project = DetailProjectModel::where('id_project', $id_project)->get();
         return view('admin.project.v_showproject', compact('project', 'detail_project'));
     }
 
@@ -122,8 +122,8 @@ class ProjectController extends Controller
      */
     public function edit($id_project)
     {
-        $detail_project = DetailProjectModel::all();
         $project = ProjectModel::findOrFail($id_project);
+        $detail_project = DetailProjectModel::where('id_project', $id_project)->get();
         return view('admin.project.v_editproject', compact('project', 'detail_project'));
     }
 

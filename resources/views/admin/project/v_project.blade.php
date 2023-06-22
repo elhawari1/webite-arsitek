@@ -13,7 +13,7 @@
                 </ol>
             </div><!-- /.col -->
             <div class="col ml-auto">
-                <a href="/admin/project/create" class="btn btn-outline-primary" style="float: right">Add Project</i></a>
+                <a href="/admin/project/create" class="btn btn-outline-success" style="float: right">Add Project</i></a>
             </div>
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->

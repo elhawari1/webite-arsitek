@@ -50,10 +50,7 @@ Route::controller(ProductController::class)->group(function (){
 
 
 Route::controller(UserProjectController::class)->group(function (){
-    Route::get('/project', 'index');
-    Route::get('project/detail', 'show');
-});
-
-Route::get('/product', function () {
-    return view('user.product.v_product');
+    Route::get('/project', 'indexProject');
+    Route::get('/product', 'indexproduct');
+    Route::get('/project/detail/{id_project}', 'showProject');
 });

@@ -4,8 +4,10 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Models\Admin\ProductModel;
+use App\Models\Admin\ProjectModel;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\DashboardModel;
+use App\Models\Admin\DetailProjectModel;
 
 class HomeController extends Controller
 {
@@ -18,8 +20,10 @@ class HomeController extends Controller
     public function index()
     {
         $banner = DashboardModel::all();
+        $project = ProjectModel::all();
         $product = ProductModel::all();
-        return view('user.v_home', compact('banner', 'product'));
+        $detail_project = DetailProjectModel::all();
+        return view('user.v_home', compact('banner', 'project', 'product' , 'detail_project'));
     }
 
     /**
