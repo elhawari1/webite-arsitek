@@ -93,10 +93,9 @@
                 @foreach ($project as $data)
                 <div class="item">
                     <div class="card-project">
+                        <a href="/project/detail/{{ $data->id_project }}">
                         <div class="card-head">
-                            <a href="/project/detail/{{ $data->id_project }}">
                                 <img src="{{ asset('storage/image_admin/project/'.$data->image_thumbnail) }}" alt="">
-                            </a>
                         </div>
                         <div class="card-sub d-flex">
                             @php
@@ -109,6 +108,8 @@
                             </div>
                             @endforeach
                         </div>
+                    </a>
+
                         <div class="card-text text-center">
                             <span>{{ $data->title }}</span>
                             <p>{{ $data->type }}</p>

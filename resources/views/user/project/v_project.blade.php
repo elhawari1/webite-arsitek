@@ -10,10 +10,9 @@
             <div class="col-3">
                 <div class="card-project">
 
+                    <a href="/project/detail/{{ $data->id_project }}">
                     <div class="card-head">
-                        <a href="">
                             <img src="{{ asset('storage/image_admin/project/'.$data->image_thumbnail) }}" alt="">
-                        </a>
                     </div>
 
                     <div class="card-sub d-flex">
@@ -26,6 +25,7 @@
                         </div>
                         @endforeach
                     </div>
+                </a>
 
                     <div class="card-text text-center">
                         <span>{{ $data->title }}</span>
