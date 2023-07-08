@@ -30,20 +30,20 @@ Route::controller(LoginController::class)->group(function (){
 Route::middleware(['auth'])->group(function () {
 
     Route::controller(DashboardController::class)->group(function (){
-    Route::get('/admin', 'index')->name('admin');
-    Route::post('/admin/banner/store', 'store');
-    Route::post('/admin/banner/update/{id_banner}', 'update');
-    Route::get('/admin/banner/destroy/{id_banner}', 'destroy');
+        Route::get('/admin', 'index')->name('admin');
+        Route::post('/admin/banner/store', 'store');
+        Route::post('/admin/banner/update/{id_banner}', 'update');
+        Route::get('/admin/banner/destroy/{id_banner}', 'destroy');
     });
 
     Route::controller(ProjectController::class)->group(function (){
-            Route::get('/admin/project', 'index')->name('project');
-            Route::get('/admin/project/create', 'create');
-            Route::post('/admin/project/store', 'store');
-            Route::get('/admin/project/show/{id_project}', 'show');
-            Route::get('/admin/project/edit/{id_project}', 'edit');
-            Route::post('/admin/project/update/{id_project}', 'update');
-            Route::get('/admin/project/destroy/{id_project}', 'destroy');
+        Route::get('/admin/project', 'index')->name('project');
+        Route::get('/admin/project/create', 'create');
+        Route::post('/admin/project/store', 'store');
+        Route::get('/admin/project/show/{id_project}', 'show');
+        Route::get('/admin/project/edit/{id_project}', 'edit');
+        Route::post('/admin/project/update/{id_project}', 'update');
+        Route::get('/admin/project/destroy/{id_project}', 'destroy');
     });
 
     Route::controller(ProductController::class)->group(function (){
@@ -63,6 +63,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::controller(UserProjectController::class)->group(function (){
     Route::get('/project', 'indexProject');
-    Route::get('/product', 'indexproduct');
     Route::get('/project/detail/{id_project}', 'showProject');
+    Route::get('/product', 'indexproduct');
+    Route::get('/product/detail/{id_product}', 'showProduct');
 });

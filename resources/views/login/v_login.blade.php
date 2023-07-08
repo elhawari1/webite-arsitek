@@ -63,8 +63,8 @@
                                                 </div>
                                                 <button type="submit" class="btn mt-4">Login</button>
                                             </form>
-                                            <p class="mb-0 mt-4 text-center"><a href="https://www.web-leb.com/code"
-                                                    class="link">Forgot your password?</a></p>
+                                            {{-- <p class="mb-0 mt-4 text-center"><a href="https://www.web-leb.com/code"
+                                                    class="link">Forgot your password?</a></p> --}}
                                         </div>
                                     </div>
                                 </div>

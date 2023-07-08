@@ -141,7 +141,7 @@
                 <div class="item">
                     <div class="card-project">
                         <div class="card-head">
-                            <a href="#">
+                            <a href="/product/detail/{{ $data->id_product }}">
                                 <img src="{{ asset('storage/image_admin/product/'.$data->image) }}" alt="">
                             </a>
                         </div>
