@@ -41,7 +41,6 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('template_admin') }}/dist/js/pages/dashboard.js"></script>
 
-
 <!-- DataTables  & Plugins -->
 <script src="{{ asset('template_admin') }}/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="{{ asset('template_admin') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -76,7 +75,6 @@
     });
 
 </script>
-
 
 {{-- Tanggal dan waktu --}}
 <script>
@@ -131,3 +129,10 @@
     }
 
 </script>
+
+{{-- Lightbox or for popup image --}}
+<script src="{{ asset('lightbox2') }}/dist/js/lightbox-plus-jquery.js"></script>
+
+{{-- Sweet Alert2 --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@yield('js')

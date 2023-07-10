@@ -41,9 +41,11 @@
 </div>
 <!-- ./wrapper -->
 
-
 {{-- javascript --}}
 @include('asset_admin.v_js')
 {{-- end javascript --}}
+
+@include('sweetalert::alert')
+
 </body>
 </html>

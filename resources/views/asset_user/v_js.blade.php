@@ -58,3 +58,5 @@
     })
 
 </script>
+ {{-- Lightbox or for popup image --}}
+<script src="{{ asset('lightbox2') }}/dist/js/lightbox-plus-jquery.js"></script>

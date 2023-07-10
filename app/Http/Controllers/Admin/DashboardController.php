@@ -52,7 +52,7 @@ class DashboardController extends Controller
         ];
  
          $this->DashboardModel->insertData($data);
-         return redirect()->route('admin')->with('pesan', 'Data added successfully');
+         return redirect()->route('admin')->with('toast_success', 'Data added successfully');
     }
 
     /**
@@ -70,8 +70,6 @@ class DashboardController extends Controller
         ]);
 
         if ($request->image != "") {
-            //if you want to change the photo
-            //upload image
             $image_file = $request->file('image');
             $image_extension = $image_file->extension();
             $image_name = $request->title . "." . $image_extension;
@@ -79,7 +77,7 @@ class DashboardController extends Controller
 
             // For Delete Image
             $banner = $this->DashboardModel->detailData($id_banner);
-            if ($banner->image != '' || $banner->image = null) {
+            if ($banner->image != '' || $banner->image == null) {
                     unlink(public_path('storage/image_admin/banner') . '/' . $banner->image);
                 }
 
@@ -95,7 +93,7 @@ class DashboardController extends Controller
             ];
             $this->DashboardModel->updateData($id_banner, $data);
         }
-        return redirect()->route('admin')->with('pesan', 'Data successfully updated');
+        return redirect()->route('admin')->with('toast_success', 'Data Update Successfully!');
     }
 
     /**
@@ -112,6 +110,6 @@ class DashboardController extends Controller
                     unlink(public_path('storage/image_admin/banner') . '/' . $banner->image);
                 }
         $this->DashboardModel->deleteData($id_banner);
-        return redirect()->route('admin')->with('pesan', 'Data Deleted Successfully');
+        return redirect()->route('admin');
     }
 }

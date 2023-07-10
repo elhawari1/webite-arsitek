@@ -99,7 +99,9 @@
             </div>
             <div class="gallery">
                 @foreach ($detail_project as $item)
-                <img src="{{ asset('storage/image_admin/project_detail/'.$item->image_detail) }}" alt="Gambar 1">
+                <a href="{{ asset('storage/image_admin/project_detail/'.$item->image_detail) }}" data-lightbox="models" data-title="{{ $project->title }}">
+                    <img src="{{ asset('storage/image_admin/project_detail/'.$item->image_detail) }}" alt="Gambar 1">
+                </a>
                 @endforeach
             </div>
         </div>

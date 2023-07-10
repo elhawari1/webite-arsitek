@@ -47,8 +47,12 @@
                             <td>{{ $data->title }}</td>
                             <td>{{ $data->type }}</td>
                             <td>
-                                <img src="{{ asset('storage/image_admin/product/'.$data->image) }}"
-                                    class="img-thumbnail" style="width: 200px">
+                                <a href="{{ asset('storage/image_admin/product/'.$data->image) }}"
+                                    data-lightbox="models" data-title="{{ $data->title }}">
+                                    <img src="{{ asset('storage/image_admin/product/'.$data->image) }}"
+                                        class="img-thumbnail" style="width: 200px">
+
+                                </a>
                             </td>
                             <td>
                                 <button type="button" class="btn btn-outline-info" data-bs-toggle="modal"
@@ -59,10 +63,10 @@
                                     data-bs-target="#update{{ $data->id_product }}">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                                    data-bs-target="#delete{{ $data->id_product }}">
+                                <a href="#" class="btn btn-outline-danger delete" data-id={{ $data->id_product }} data-title={{ $data->title }}>
                                     <i class="fa-solid fa-trash"></i>
-                                </button>
+                                
+                                </a>
                             </td>
                         </tr>
                         @endforeach
@@ -156,8 +160,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel" style="margin-left: 220px">
-                        {{ $data->id_product }}</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel" style="margin-left: 20 0px">
+                        {{ $data->title }}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -231,5 +235,31 @@
     @endforeach
 
 </section>
+@endsection
 
+@section('js')
+<script>
+    $('.delete').click(function () {
+        var id_product = $(this).attr('data-id');
+        var title = $(this).attr('data-title');
+        Swal.fire({
+            title: 'Are you sure?',
+            html: "You won't be able to revert this! <strong>" + title + "</strong>",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location = "/admin/product/destroy/" + id_product + ""
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
+    });
+</script>
 @endsection

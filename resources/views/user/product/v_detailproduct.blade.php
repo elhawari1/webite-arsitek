@@ -18,7 +18,9 @@
         <div class="row align-items-md-stretch">
             <div class="col-md-4">
                 <div class="image-box">
+                  <a href="{{ asset('storage/image_admin/product/'.$product->image) }}" data-lightbox="models" data-title="{{ $product->title }}">
                     <img src="{{ asset('storage/image_admin/product/'.$product->image) }}" alt="">
+                  </a>
                 </div>
             </div>
             <div class="col-md-8">
