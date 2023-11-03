@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="/admin" class="brand-link">
       <img src="{{ asset('foto_admin') }}/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light" style="color: white">Global Persada</span>
+      <span class="brand-text font-weight-light" style="color: white">Website Arsitek</span>
     </a>
 
     <!-- Sidebar -->

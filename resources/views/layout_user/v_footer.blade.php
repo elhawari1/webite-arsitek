@@ -4,13 +4,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <h3>Global Persada</h3>
+                    <h3>Website Arsitek</h3>
                     <p>
-                        Jl. Pahlawan Sunaryo No.4 <br>
+                        Jl. Pahlawan <br>
                         Pateban, Kb. Waris, Kec. Pandaan, Pasuruan<br>
                         Jawa Timur 67156, Indonesia, Kota Pasuruan<br><br>
                         <strong>Phone:</strong> (0343) 631627<br>
-                        <strong>Email:</strong> globalpersada@gmail.com<br>
+                        <strong>Email:</strong> websitearsitek@gmail.com<br>
                     </p>
                 </div>
 
@@ -41,7 +41,7 @@
                     <div class="social-links mt-3">
                         <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                         <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                        <a href="https://www.instagram.com/gpersada.studio/" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+                        <a href="$" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
                         {{-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a> --}}
                         <a href="#" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
                     </div>
@@ -53,7 +53,7 @@
 
     <div class="container footer-bottom clearfix">
         <div class="copyright">
-            &copy; Copyright <strong><span>Global Persada</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>Website Arsitek</span></strong>. All Rights Reserved
         {{-- </div>
         <div class="credits">
             Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
