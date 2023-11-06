@@ -26,25 +26,9 @@ class HomeController extends Controller
         return view('user.v_home', compact('banner', 'project', 'product' , 'detail_project'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function contact()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('user.v_contanct');
     }
 
     /**

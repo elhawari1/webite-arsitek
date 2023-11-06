@@ -130,9 +130,10 @@
 
 </script>
 
-{{-- Lightbox or for popup image --}}
-<script src="{{ asset('lightbox2') }}/dist/js/lightbox-plus-jquery.js"></script>
-
 {{-- Sweet Alert2 --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{{-- LightBox --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
 @yield('js')

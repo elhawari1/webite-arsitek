@@ -37,13 +37,9 @@ class DashboardController extends Controller
             'image' => 'required|mimes:jpg,jpeg,bmp,png',
         ]);
 
-        //Retrieve uploaded image files
          $image_file = $request->file('image');
-        //Retrieves uploaded image file extension
          $image_extension = $image_file->extension();
-         //Form the name of the image file to be saved
          $image_name = $request->title . "." . $image_extension;
-         //Saves the image file to the specified storage directory
          $path = $request->file('image')->storeAs('image_admin/banner', $image_name);
         
          $data = [

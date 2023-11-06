@@ -45,6 +45,8 @@ class ProductController extends Controller
         $validated = $request->validate([
             'title' => 'required',
             'type' => 'required',
+            'weight' => 'required',
+            'length' => 'required',
             'width' => 'required',
             'height' => 'required',
             'colour' => 'required',
@@ -59,6 +61,8 @@ class ProductController extends Controller
         $product = new ProductModel([
             'title' => $request->title,
             'type' => $request->type,
+            'weight' => $request->weight,
+            'length' => $request->length,
             'width' => $request->width,
             'height' => $request->height,
             'colour' => $request->colour,
@@ -117,6 +121,8 @@ class ProductController extends Controller
             $product->update([
                 'title' => $request->title,
                 'type' => $request->type,
+                'weight' => $request->weight,
+                'length' => $request->length,
                 'width' => $request->width,
                 'height' => $request->height,
                 'colour' => $request->colour,
@@ -126,6 +132,8 @@ class ProductController extends Controller
             $product->update([
                 'title' => $request->title,
                 'type' => $request->type,
+                'weight' => $request->weight,
+                'length' => $request->length,
                 'width' => $request->width,
                 'height' => $request->height,
                 'colour' => $request->colour,

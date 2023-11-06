@@ -1,4 +1,5 @@
 @extends('layout_user.v_index')
+@section('title', 'Website.Arsitek')
 @section('content')
     {{-- Hero --}}
     <section id="hero">
@@ -143,7 +144,8 @@
                             <div class="card-project">
                                 <div class="card-head">
                                     <a href="/product/detail/{{ $data->id_product }}">
-                                        <img src="{{ asset('storage/image_admin/product/' . $data->image) }}" alt="">
+                                        <img src="{{ asset('storage/image_admin/product/' . $data->image) }}"
+                                            alt="">
                                     </a>
                                 </div>
                                 <div class="card-text text-center">

@@ -10,6 +10,6 @@ class ProductModel extends Model
     use HasFactory;
     protected $table = 'tbl_product';
     protected $primaryKey = 'id_product';
-    protected $fillable = ['title', 'type', 'width', 'height', 'colour', 'image'];
+    protected $fillable = ['title', 'type', 'weight', 'length', 'width', 'height', 'colour', 'image'];
     
 }

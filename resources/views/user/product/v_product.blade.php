@@ -1,4 +1,6 @@
 @extends('layout_user.v_index')
+@section('title', 'Prodcut')
+
 @section('content')
 
 <main id="head-product">

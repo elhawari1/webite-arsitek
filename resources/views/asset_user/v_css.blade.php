@@ -1,7 +1,10 @@
  <!-- Favicons -->
  <link href="{{ asset('template_user') }}/assets/img/logowa.png" rel="icon">
  <link href="{{ asset('template_user') }}/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+ {{-- Font Awesome --}}
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
  <!-- Google Fonts -->
  <link
      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i"

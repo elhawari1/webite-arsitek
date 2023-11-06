@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id('id_product');
             $table->string('title');
             $table->string('type');
-            $table->string('width');
-            $table->string('height');
+            $table->integer('weight');
+            $table->integer('length');
+            $table->integer('width');
+            $table->integer('height');
             $table->string('colour');
             $table->string('image');
             $table->timestamps();

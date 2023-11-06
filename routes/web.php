@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\Login\LoginController;
+use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -57,9 +58,15 @@ Route::middleware(['auth'])->group(function () {
 
     });
 
+    Route::controller(ArticleController::class)->group(function ()
+    {
+      Route::get('/admin/article', 'index')->name('article');  
+    });
+
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 Route::controller(UserProjectController::class)->group(function (){
     Route::get('/project', 'indexProject');
