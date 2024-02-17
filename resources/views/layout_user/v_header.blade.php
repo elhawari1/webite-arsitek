@@ -4,8 +4,7 @@
       
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto" href="/">Home</a></li>
-          <li><a class="nav-link scrollto" href="/article">Article</a></li>
+          <li><a class="nav-link scrollto" href="/">Home</a></li> 
           <li><a class="nav-link scrollto" href="/project">Project</a></li>
           <li><a class="nav-link scrollto" href="/product">Product</a></li>
           <li><a class="nav-link scrollto" href="/contact">Contact</a></li>

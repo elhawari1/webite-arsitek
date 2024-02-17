@@ -11,13 +11,13 @@
     <meta content="" name="keywords"> --}}
 
     {{-- CSS --}}
-    @include('asset_user.v_css')
+    @include('asset_user.v_css')     
     {{-- End CSS --}}
 </head>
 
 <body>
     <a class="wafixed" href="https://wa.me/62823928XXX" target="_blank"><span class="fa-stack fa-lg">
-            <i class="fa-brands fa-whatsapp"></i>
+            <i class="fa-brands fa-whatsapp fa-2x"></i>
         </span></a>
     <!-- ======= Header ======= -->
     @include('layout_user.v_header')
